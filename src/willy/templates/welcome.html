@@ -1,0 +1,8 @@
+{% load i18n %}
+
+{% if user.is_authenticated %}
+  <p>{% trans "Hello," %} {{ user.username }}</p>
+  <a href="/logout/">{% trans "Log out" %}</a>
+{% else %}
+  <p>{% trans "You are not logged in" %}</p>
+{% endif %}
