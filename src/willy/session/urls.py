@@ -6,21 +6,21 @@ urlpatterns = patterns('',
 
     # Login/logout:
     url(r'^login/?', 'django.contrib.auth.views.login', {'template_name' : 'login.html'}),
-    url(r'^logout/?', 'django.contrib.auth.views.logout_then_login'),
+    url(r'^logout/?$', 'django.contrib.auth.views.logout_then_login'),
 
     # Welcome screen:
-    url(r'^welcome/?', 'session.views.welcome'),
+    url(r'^welcome/?$', 'session.views.welcome'),
 
     # Registration:
-    url(r'^register/?', 'session.views.register'),
+    url(r'^register/?$', 'session.views.register'),
 
     # Profile editing:
-    url(r'^profile/edit/change_password/?',
+    url(r'^profile/edit/?$', 'session.views.edit_profile'),
+    url(r'^profile/edit/change_password/?$',
         'django.contrib.auth.views.password_change',
         {
             'template_name' : 'change_password.html',
             'post_change_redirect' : '/session/welcome/',
             }
         ),
-    url(r'^profile/edit/?', 'session.views.edit_profile'),
 )
