@@ -21,4 +21,7 @@ urlpatterns = patterns('',
 
     # Welcome screen:
     url(r'welcome/?', 'views.welcome'),
+
+    # Registration:
+    url(r'register/?', 'views.register'),
 )
