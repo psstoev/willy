@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext
 
 from willy.gallery.models import Category
-from willy.gallery.forms import CategoryForm
+from willy.gallery.forms import CategoryForm, CategoryDeleteForm
 
 def add_category(request):
     if request.method == 'GET':
@@ -39,12 +39,17 @@ def edit_category(request, category_id):
         category.category_parent = category_data['category_parent']
         category.name = category_data['name']
         category.save()
-        return redirect('/welcome/')    
+        return redirect('/welcome/')
 
     return render_to_response('edit_category.html',
                               {'form' : form,
                                'category_id' : category_id},
                               context_instance=RequestContext(request))
+
+def delete_category(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    category.delete()
+    return redirect('/welcome/')
 
 def view_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)

@@ -6,4 +6,5 @@ urlpatterns = patterns('gallery.views',
     url(r'^category/add?', 'add_category'),
     url(r'^category/view/(?P<category_id>\d+)/?', 'view_category'),
     url(r'^category/edit/(?P<category_id>\d+)/?', 'edit_category'),
+    url(r'^category/delete/(?P<category_id>\d+)/?', 'delete_category'),
 )
