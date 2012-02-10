@@ -1,12 +1,29 @@
 <!DOCTYPE html>
+
+{% load i18n %}
+
 <html>
 <head>
+  <meta charset="utf-8">
   <title>{{ title|default:"Willy" }}</title>
 </head>
 <body>
-  {% block toolbar %}
-  {% endblock toolbar %}
-  {% block content %}
-  {% endblock content %}
+  <div class="toolbar">
+    {% if user.is_authenticated %}
+      <h1><a href="/session/profile/">{% trans "Edit profile" %}</a></h1>
+      <h1><a href="/session/profile/change_password">{% trans "Change password" %}</a></h1>
+      <h1><a href="/session/logout">{% trans "Log out" %}</a></h1>
+    {% else %}
+      <h1><a href="/session/login/">{% trans "Login" %}</a></h1>
+      <h1><a href="/session/register/">{% trans "Registration" %}</a></h1>
+    {% endif %}
+  </div>
+  <div id="wrapper">
+    <header>
+      <h1>Willy</h1>
+    </header>
+    {% block content %}
+    {% endblock content %}
+  </div>
 </body>
 </html>

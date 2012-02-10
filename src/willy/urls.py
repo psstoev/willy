@@ -20,4 +20,7 @@ urlpatterns = patterns('',
 
     # Gallery urls:
     url(r'^gallery/?', include('gallery.urls')),
+
+    # Index page:
+    url(r'^$', include('session.urls')),
 )

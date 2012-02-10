@@ -8,6 +8,10 @@ from django.contrib.auth.decorators import login_required
 from willy.session.forms import RegistrationForm, EditProfileForm
 from willy.gallery.models import Category
 
+def index(request):
+    return render_to_response('index.html',
+                              context_instance=RequestContext(request))
+
 @login_required
 def welcome(request):
     categories = Category.objects.filter(owner=request.user)
