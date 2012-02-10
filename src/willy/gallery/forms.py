@@ -1,6 +1,6 @@
 from django import forms
 
-from willy.gallery.models import Category
+from willy.gallery.models import Category, Picture
 
 class CategoryForm(forms.ModelForm):
     class Meta:
@@ -10,3 +10,8 @@ class CategoryForm(forms.ModelForm):
 class CategoryDeleteForm(forms.Form):
     category_id = forms.IntegerField(widget=forms.HiddenInput)
     selected = forms.BooleanField(widget=forms.HiddenInput)
+    
+class PictureUploadForm(forms.ModelForm):
+    class Meta:
+        model = Picture
+        exclude = ('owner', 'uploaded', 'pic')
