@@ -10,8 +10,9 @@
 <body>
   <div class="toolbar">
     {% if user.is_authenticated %}
-      <h1><a href="/session/profile/">{% trans "Edit profile" %}</a></h1>
-      <h1><a href="/session/profile/change_password">{% trans "Change password" %}</a></h1>
+      <h1><a href="/session/welcome/">{% trans "Home" %}</a></h1>
+      <h1><a href="/session/profile/edit/">{% trans "Edit profile" %}</a></h1>
+      <h1><a href="/session/profile/edit/change_password/">{% trans "Change password" %}</a></h1>
       <h1><a href="/session/logout">{% trans "Log out" %}</a></h1>
     {% else %}
       <h1><a href="/session/login/">{% trans "Login" %}</a></h1>

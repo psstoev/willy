@@ -1,7 +1,10 @@
+{% extends "base.html" %}
 {% load i18n %}
 
-<form method="post" action="/gallery/category/add/">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="{% trans "Add category" %}" />
-</form>
+{% block content %}
+  <form method="post" action="/gallery/category/add/">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% trans 'Add category' %}" />
+  </form>
+{% endblock content %}

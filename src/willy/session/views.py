@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import ugettext as _
 
 from willy.session.forms import RegistrationForm, EditProfileForm
 from willy.gallery.models import Category
@@ -18,6 +19,7 @@ def welcome(request):
 
     return render_to_response('welcome.html',
                               {'user' : request.user,
+                               'title' : request.user.username,
                                'categories' : categories},
                               context_instance=RequestContext(request))
 

@@ -1,17 +1,18 @@
+{% extends "base.html" %}
+
 {% load i18n %}
 
-{% if user.is_authenticated %}
-  <p>{% trans "Hello" %}, {{ user.username }}</p>
-  <a href="/session/logout/">{% trans "Log out" %}</a>
-  <a href="/session/profile/edit/">{% trans "Edit profile" %}</a>
-  <a href="/session/profile/edit/change_password/">{% trans "Change password" %}</a>
-  <p>{% trans "Your categories" %}</p>
-  {% for category in categories %}
-    <a href="/gallery/category/view/{{ category.id }}">{{ category.name }}</a>
-    <a href="/gallery/category/edit/{{ category.id }}">{% trans "Edit" %}</a>
-    <a href="/gallery/category/delete/{{ category.id }}">{% trans "Delete" %}</a>
-  {% endfor %}
-  <a href="/gallery/category/add/">{% trans "Add new category" %}</a>
-{% else %}
-  <p>{% trans "You are not logged in" %}</p>
-{% endif %}
+{% block content %}
+  {% if user.is_authenticated %}
+    <p>{% trans "Hello" %}, {{ user.username }}</p>
+    <p>{% trans "Your categories" %}</p>
+    {% for category in categories %}
+      <a href="/gallery/category/view/{{ category.id }}">{{ category.name }}</a>
+      <a href="/gallery/category/edit/{{ category.id }}">{% trans "Edit" %}</a>
+      <a href="/gallery/category/delete/{{ category.id }}">{% trans "Delete" %}</a>
+    {% endfor %}
+    <a href="/gallery/category/add/">{% trans "Add new category" %}</a>
+  {% else %}
+      <p>{% trans "You are not logged in" %}</p>
+  {% endif %}
+{% endblock %}
