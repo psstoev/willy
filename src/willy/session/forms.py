@@ -8,3 +8,7 @@ class RegistrationForm(auth.forms.UserCreationForm):
     last_name = forms.CharField(label=_('Last name:'), required=False)
     email = forms.EmailField(label=_('E-mail address:'), required=True)
         
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = auth.models.User
+        fields = ('first_name', 'last_name', 'email')

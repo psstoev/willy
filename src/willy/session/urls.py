@@ -10,4 +10,8 @@ urlpatterns = patterns('',
 
     # Registration:
     url(r'^register/?', 'session.views.register'),
+
+    # Profile editing:
+    url(r'^profile/edit/?', 'session.views.edit_profile'),
+
 )
