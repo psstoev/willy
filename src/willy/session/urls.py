@@ -12,6 +12,12 @@ urlpatterns = patterns('',
     url(r'^register/?', 'session.views.register'),
 
     # Profile editing:
+    url(r'^profile/edit/change_password/?',
+        'django.contrib.auth.views.password_change',
+        {
+            'template_name' : 'change_password.html',
+            'post_change_redirect' : '/session/welcome/',
+            }
+        ),
     url(r'^profile/edit/?', 'session.views.edit_profile'),
-
 )
