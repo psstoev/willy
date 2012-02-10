@@ -18,7 +18,7 @@ def add_category(request):
         
         category = Category(**category_data)
         category.save()
-        return redirect('/welcome/')
+        return redirect('/session/welcome/')
 
     return render_to_response('add_category.html',
                               {'form' : form},
@@ -39,7 +39,7 @@ def edit_category(request, category_id):
         category.category_parent = category_data['category_parent']
         category.name = category_data['name']
         category.save()
-        return redirect('/welcome/')
+        return redirect('/session//welcome/')
 
     return render_to_response('edit_category.html',
                               {'form' : form,
@@ -49,7 +49,7 @@ def edit_category(request, category_id):
 def delete_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
     category.delete()
-    return redirect('/welcome/')
+    return redirect('/session/welcome/')
 
 def view_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)

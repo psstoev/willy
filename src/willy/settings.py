@@ -6,6 +6,8 @@ TEMPLATE_DEBUG = DEBUG
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
+LOGIN_URL = '/session/login/'
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
     ('Plamen Stoev', 'psstoev@gmail.com'),
@@ -126,6 +128,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     # Our apps start here:
+    'session',
     'gallery',
 )
 

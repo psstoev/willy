@@ -1,9 +1,10 @@
+# Create your views here.
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 
-from willy.forms import RegistrationForm
+from willy.session.forms import RegistrationForm
 from willy.gallery.models import Category
 
 def welcome(request):
@@ -38,7 +39,7 @@ def register(request):
 
         user = authenticate(username=user_data['username'], password=user_data['password'])
         login(request, user)
-        return redirect('/welcome/')
+        return redirect('/session/welcome/')
 
     return render_to_response('register.html',
                               {'form' : form},

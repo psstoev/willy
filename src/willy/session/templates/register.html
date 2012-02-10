@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<form method="post" action="/register/">
+<form method="post" action="/session/register/">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="{% trans 'Create account' %}" />

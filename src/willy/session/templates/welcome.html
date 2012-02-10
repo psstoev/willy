@@ -2,7 +2,7 @@
 
 {% if user.is_authenticated %}
   <p>{% trans "Hello," %} {{ user.username }}</p>
-  <a href="/logout/">{% trans "Log out" %}</a>
+  <a href="/session/logout/">{% trans "Log out" %}</a>
 
   <p>{% trans "Your categories" %}</p>
   {% for category in categories %}
