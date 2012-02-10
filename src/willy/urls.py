@@ -24,4 +24,7 @@ urlpatterns = patterns('',
 
     # Registration:
     url(r'register/?', 'views.register'),
+
+    # Gallery urls:
+    url(r'^gallery/?', include('gallery.urls')),
 )

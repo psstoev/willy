@@ -7,8 +7,11 @@ from willy.forms import RegistrationForm
 from willy.gallery.models import Category
 
 def welcome(request):
+    categories = Category.objects.filter(owner=request.user)
+
     return render_to_response('welcome.html',
-                              {'user' : request.user},
+                              {'user' : request.user,
+                               'categories' : categories},
                               context_instance=RequestContext(request))
 
 def register(request):
