@@ -2,6 +2,7 @@
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import ugettext as _
 
 from willy.gallery.models import Category
 from willy.gallery.forms import CategoryForm, CategoryDeleteForm
@@ -25,9 +26,14 @@ def add_category(request):
     return render_to_response('add_category.html',
                               {'form' : form},
                               context_instance=RequestContext(request))
+
 @login_required
 def edit_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
+    if category.owner != request.user:
+        return render_to_response('gallery_error.html',
+                                  {'message' : _("You don't have enough privileges to edit this category")},
+                                  context_instance=RequestContext(request))
     if request.method == 'GET':
         return render_to_response('edit_category.html',
                                   {'form' : CategoryForm(instance=category),
@@ -51,6 +57,11 @@ def edit_category(request, category_id):
 @login_required
 def delete_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
+    if category.owner != request.user:
+        return render_to_response('gallery_error.html',
+                                  {'message' : _("You don't have enough privileges to delete this category")},
+                                  context_instance=RequestContext(request))
+
     category.delete()
     return redirect('/session/welcome/')
 
