@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 
 from willy.forms import RegistrationForm
+from willy.gallery.models import Category
 
 def welcome(request):
     return render_to_response('welcome.html',
@@ -26,6 +27,10 @@ def register(request):
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.save()
+
+            category = Category(name=user.username, owner=user)
+            category.category_parent = category.id
+            category.save()
             
             user = authenticate(username=user_data['username'], password=user_data['password'])
             login(request, user)
