@@ -107,3 +107,9 @@ def upload_picture(request):
     return render_to_response('upload_picture.html',
                               {'form' : form},
                               context_instance=RequestContext(request))
+                              
+def view_picture(request, picture_id):
+    picture = get_object_or_404(Picture, pk=picture_id)
+    return render_to_response('view_picture.html',
+                              {'picture' : picture},
+                              context_instance=RequestContext(request))

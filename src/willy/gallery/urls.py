@@ -10,4 +10,5 @@ urlpatterns = patterns('gallery.views',
     
     # Picture management:
     url(r'^picture/upload/?', 'upload_picture'),
+    url(r'^picture/view/(?P<picture_id>\d+)/?', 'view_picture'),
 )
