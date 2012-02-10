@@ -7,6 +7,7 @@
   <p>{% trans "Your categories" %}</p>
   {% for category in categories %}
     <a href="/gallery/category/view/{{ category.id }}">{{ category.name }}</a>
+    <a href="/gallery/category/edit/{{ category.id }}">{% trans "Edit" %}</a>
   {% endfor %}
   <a href="/gallery/category/add/">{% trans "Add new category" %}</a>
 {% else %}
