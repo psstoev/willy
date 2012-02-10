@@ -3,11 +3,12 @@ from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.decorators import login_required
 
 from willy.session.forms import RegistrationForm, EditProfileForm
 from willy.gallery.models import Category
 
+@login_required
 def welcome(request):
     categories = Category.objects.filter(owner=request.user)
 
@@ -46,6 +47,7 @@ def register(request):
                               {'form' : form},
                               context_instance=RequestContext(request))
 
+@login_required
 def edit_profile(request):
     if request.method == 'GET':
         user = request.user
