@@ -36,7 +36,7 @@ def edit_category(request, category_id):
                                   context_instance=RequestContext(request))
     if category.name == category.owner.username:
         return render_to_response('gallery_error.html',
-                                  {'message' : _("You can't delete this category")},
+                                  {'message' : _("You can't edit this category")},
                                   context_instance=RequestContext(request))
     if request.method == 'GET':
         return render_to_response('edit_category.html',
