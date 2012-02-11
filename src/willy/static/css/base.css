@@ -35,6 +35,10 @@ a img {
 }
 /* END RESETS */
 
+body {
+    min-width: 960px;
+}
+
 .toolbar {
     overflow: hidden;
     background-color: #6b8e23;
@@ -43,6 +47,7 @@ a img {
 
 .toolbar div {
     width: auto;
+    height: 100%;
     float: right;
 }
 
@@ -60,4 +65,17 @@ a img {
 
 .toolbar div a:hover {
     color: #fff;
+}
+
+#wrapper {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header h1 {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 4em;
+    font-family: 'Palatino linotype', 'Book Antiqua', Palatino, serif;
 }

@@ -7,6 +7,8 @@
   <meta charset="utf-8">
   <title>{{ title|default:"Willy" }}</title>
   <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" />
+  {% block extracss %}
+  {% endblock extracss %}
 </head>
 <body>
   <div class="toolbar">
@@ -26,8 +28,10 @@
     <header>
       <h1>Willy</h1>
     </header>
-    {% block content %}
-    {% endblock content %}
+    <div id="content">
+      {% block content %}
+      {% endblock content %}
+    </div>
   </div>
 </body>
 </html>
