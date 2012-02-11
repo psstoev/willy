@@ -1,0 +1,63 @@
+/*RESETS*/
+*, html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, label, fieldset, input, p, blockquote, th, td {
+    margin:0;
+    padding:0;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+fieldset, img {
+    border:0;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style:normal;
+    font-weight:normal;
+}
+ol, ul, li {
+    list-style:none;
+}
+caption, th {
+    text-align:left;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size:100%;
+    font-weight:bold;
+}
+strong {
+    font-weight:bold;
+}
+a img {
+    border:none;
+}
+.clearfix {
+    clear: both;
+}
+/* END RESETS */
+
+.toolbar {
+    overflow: hidden;
+    background-color: #6b8e23;
+    height: 35px;
+}
+
+.toolbar div {
+    width: auto;
+    float: right;
+}
+
+.toolbar div a {
+    position: relative;
+    float: left;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-right: 15px;
+    text-decoration: none;
+    color: #ee0;
+}
+
+.toolbar div a:hover {
+    color: #fff;
+}
