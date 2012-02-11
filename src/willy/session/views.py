@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext as _
 
 from willy.session.forms import RegistrationForm, EditProfileForm
-from willy.gallery.models import Category
+from willy.gallery.models import Category, Picture
 
 def index(request):
     return render_to_response('index.html',
@@ -16,11 +16,13 @@ def index(request):
 @login_required
 def welcome(request):
     categories = Category.objects.filter(owner=request.user)
+    pictures = Picture.objects.filter(owner=request.user)
 
     return render_to_response('welcome.html',
                               {'user' : request.user,
                                'title' : request.user.username,
-                               'categories' : categories},
+                               'categories' : categories,
+                               'pictures' : pictures},
                               context_instance=RequestContext(request))
 
 def register(request):
