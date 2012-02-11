@@ -11,7 +11,7 @@ from willy.gallery.forms import CategoryForm, CategoryDeleteForm
 def add_category(request):
     if request.method == 'GET':
         return render_to_response('add_category.html',
-                                  {'form' : CategoryForm()},
+                                  {'form' : CategoryForm(user=request.user)},
                                   context_instance=RequestContext(request))
 
     form = CategoryForm(request.POST)
@@ -51,7 +51,7 @@ def edit_category(request, category_id):
         category.category_parent = category_data['category_parent']
         category.name = category_data['name']
         category.save()
-        return redirect('/session//welcome/')
+        return redirect('/session/welcome/')
 
     return render_to_response('edit_category.html',
                               {'form' : form,
