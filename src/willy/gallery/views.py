@@ -11,6 +11,15 @@ from willy.gallery.models import Category, Picture
 from willy.gallery.forms import CategoryForm, PictureUploadForm
 from willy.gallery.utils import save_picture
 
+def get_categories(request):
+    if request.user.is_authenticated():
+        categories = Category.objects.filter(owner=request.user)
+    else:
+        categories = Category.objects.all()[:10]
+        
+    return categories
+
+
 @login_required
 def add_category(request):
     if request.method == 'GET':
@@ -79,7 +88,7 @@ def delete_category(request, category_id):
 
 def view_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
-    return render_to_response('category.html',
+    return render_to_response('view_category.html',
                               {'category' : category},
                               context_instance=RequestContext(request))
 
@@ -117,23 +126,26 @@ def upload_picture(request):
                               context_instance=RequestContext(request))
                               
 def view_picture(request, picture_id):
+    categories = get_categories(request)
     picture = get_object_or_404(Picture, pk=picture_id)
     return render_to_response('view_picture.html',
                               {'picture' : picture},
                               context_instance=RequestContext(request))
                               
 def view_categories(request):
-    categories = Category.objects.all()
+    categories = get_categories(request)
     if request.method == 'GET':
         return render_to_response('view_categories.html',
                                   {'categories' : categories},
                                   context_instance=RequestContext(request))
                                   
 def view_pictures(request):
+    categories = get_categories(request)
     pictures = Picture.objects.all()
     if request.method == 'GET':
         return render_to_response('view_pictures.html',
-                                  {'pictures' : pictures},
+                                  {'pictures' : pictures,
+                                   'categories' : categories},
                                   context_instance=RequestContext(request))     
 
 @login_required                                  
