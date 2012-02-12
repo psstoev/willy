@@ -3,6 +3,9 @@
 {% load i18n %}
 
 {% block content %}
+  <h1 id="title">
+    {% trans "View pictures" %}
+  </h1>
   {% include "categories_sidebar.html" %}
   {% for picture in pictures %}
     <a href="/gallery/picture/view/{{ picture.id }}">{{ picture.name }}</a>

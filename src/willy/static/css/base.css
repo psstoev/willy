@@ -47,6 +47,7 @@ a {
     overflow: hidden;
     background-color: #6b8e23;
     height: 35px;
+    border-bottom: 1px solid #405414;
 }
 
 #greeting {
@@ -100,6 +101,7 @@ header {
     width: 100%;
     overflow: hidden;
     display: block;
+    /* border-bottom: 2px solid #000000; */
 }
 
 header h1 {
@@ -114,12 +116,17 @@ header a, header a:visited, header a:hover, header a:active {
     color: #000000;
 }
 
+header a:hover, header a:active {
+    padding-bottom: 3px;
+    border-bottom: 2px solid #000000;
+}
+
 nav {
     float: right;
     font-size: 0.7em;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 35px;
+    margin-top: 40px;
     color: #eeee00;
 }
 
@@ -127,31 +134,57 @@ nav a {
     margin-left: 10px;
 }
 
+h1#title {
+    width: 940px;
+    height: 25px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-left: 20px;
+    color: #eeee00;
+    background-color: #6b8e23;
+    border-top: 1px solid #405414;
+    border-bottom: 1px solid #405414;
+}
+
 section#categories {
     display: block;
     width: 312px;
     background-color: #bbbb00;
-    padding-bottom: 10px;
 }
 
 section#categories h2 {
-    margin-bottom: 10px;
     padding-top: 10px;
     padding-left: 20px;
     padding-bottom: 10px;
     background-color: #6b8e23;
     color: #eeee00;
+    border: 1px solid #405414;
+}
+
+section#categories div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-left: 1px solid #6b8e23;
+    border-right: 1px solid #6b8e23;
+    border-bottom: 1px solid #6b8e23;
 }
 
 section#categories a {
     display: block;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     padding-left: 20px;
     font-size: 14px;
     color: #000;
 }
 
-section#categories a:hover, section#categories a:active {
+section#categories a:hover, section#categories a:active, section#categories a.active {
    background-color: #eeee00;
+}
+
+section#categories a.active {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-top: 1px solid #6b8e23;
+    border-bottom: 1px solid #6b8e23;
 }
