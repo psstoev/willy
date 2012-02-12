@@ -1,4 +1,5 @@
 # Create your views here.
+import os, glob
 from datetime import datetime
 
 from django.shortcuts import render_to_response, redirect, get_object_or_404
@@ -6,6 +7,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext as _
 from django.core.files import File
+from django.conf import settings
 
 from willy.gallery.models import Category, Picture
 from willy.gallery.forms import CategoryForm, PictureUploadForm, PictureEditForm
@@ -183,6 +185,21 @@ def edit_picture(request, picture_id):
                               {'form' : form,
                                'picture_id' : picture_id},
                               context_instance=RequestContext(request))
+
+@login_required
+def delete_picture(request, picture_id):
+    picture = get_object_or_404(Picture, pk=picture_id)
+    if picture.owner != request.user:
+        return render_to_response('gallery_error.html',
+                                  {'message' : _("You don't have enough privileges to delete this category")},
+                                  context_instance=RequestContext(request))
+
+    name = os.path.join(settings.MEDIA_ROOT, '.'.join(picture.pic.name.split('.')[:-1]))
+    for filename in glob.glob(name + '*'):
+        os.remove(filename)
+    picture.delete()
+
+    return redirect('/session/welcome/')
                               
 def view_categories(request):
     categories = Category.objects.all()

@@ -12,6 +12,7 @@ urlpatterns = patterns('gallery.views',
     url(r'^picture/upload/?', 'upload_picture'),
     url(r'^picture/view/(?P<picture_id>\d+)/?', 'view_picture'),
     url(r'^picture/edit/(?P<picture_id>\d+)/?', 'edit_picture'),
+    url(r'^picture/delete/(?P<picture_id>\d+)/?', 'delete_picture'),
     
     # Menu URLs
     url(r'^pictures/?$', 'view_pictures'),
