@@ -79,3 +79,8 @@ header h1 {
     font-size: 4em;
     font-family: 'Palatino linotype', 'Book Antiqua', Palatino, serif;
 }
+
+header a, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #000
+}
