@@ -4,12 +4,16 @@ from django.db.models import F
 from willy.gallery.models import Category, Picture
 
 class CategoryForm(forms.ModelForm):
-    def __init__(self, user=None, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        queryset = None
+        if kwargs.has_key('user'):
+            queryset = Category.objects.filter(owner=kwargs.pop('user'))
+        elif kwargs.has_key('instance'):
+            category = kwargs['instance']
+            queryset = Category.objects.filter(owner=category.owner).exclude(name=category.name)
         super(CategoryForm, self).__init__(*args, **kwargs)
-        if hasattr(self.instance, 'owner'):
-            self.fields['category_parent'].queryset=Category.objects.filter(owner=self.instance.owner).exclude(name=self.instance.name)
-        elif user:
-            self.fields['category_parent'].queryset=Category.objects.filter(owner=user)
+        if queryset is not None:
+            self.fields['category_parent'].queryset = queryset
 
     class Meta:
         model = Category
