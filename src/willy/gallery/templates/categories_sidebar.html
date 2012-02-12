@@ -1,0 +1,13 @@
+{% load i18n %}
+<section id="categories">
+  <h2>
+    {% if user.is_authenticated %}
+      {% trans "My categories" %}
+    {% else %}
+      {% trans "Last ten categories" %}
+    {% endif %}
+  </h2>
+  {% for category in categories %}
+    <a href="/gallery/category/view/{{ category.id }}">{{ category.name|slice:":30" }}{% if category.name|length > 30 %}&nbsp;&hellip;{% endif %}</a>
+  {% endfor %}
+</section>

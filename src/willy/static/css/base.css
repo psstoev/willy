@@ -125,3 +125,13 @@ nav {
 nav a {
     margin-left: 10px;
 }
+
+section#categories {
+    display: block;
+    width: 300px;
+    background-color: red;
+}
+
+section#categories a {
+    display: block;
+}
