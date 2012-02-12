@@ -5,28 +5,69 @@
 
 {% block extracss %}
   <style type="text/css">
-    #fields {
+    #login {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        border: 2px solid #6b8e23;
+        width: 400px;
+        min-width: 400px;
+    }
+
+    #login h2 {
+        padding: 5px 15px;
+        background-color: #6b8e23;
+        color: #ee0;
+        font-size: 1.2em;
+    }
+
+    #login form {
+        margin: 10px;
+        height: 100%;
+    }
+
+    #login form p {
+        margin: 5px;
         overflow: hidden;
     }
 
-    #fields p {
-        margin-right: 10px;
+    #fields input {
+        float: right;
+    }
+
+    #fields label {
         float: left;
     }
+
+    #submit {
+        width: 100%;
+        height: 40px;
+    }
+
+    #submit input {
+        margin: 5px;
+        width: 25%;
+        float: right;
+    }
   </style>
-{% endblock %}
+{% endblock extracss %}
 
 {% block content %}
   {% if form.errors %}
     <p>{% trans "User name and password does not match, or there is no such user in the system."%}</p>
   {% endif %}
 
-  <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-    {% csrf_token %}
-    <div id="fields">
-      {{ form.as_p }}
-    </div>
-    <input type="submit" value="{% trans 'Log in' %}" />
-    <input type="hidden" name="next" value="{{ next|default:'/session/welcome/' }}" />
-  </form>
+  <div id="login">
+    <h2>{% trans "Log in" %}</h2>
+    <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+      {% csrf_token %}
+      <div id="fields">
+        {{ form.as_p }}
+      </div>
+      <div id="submit">
+        <input type="submit" value="{% trans 'Log in' %}" />
+      </div>
+      <input type="hidden" name="next" value="{{ next|default:'/session/welcome/' }}" />
+    </form>
+  </div>
 {% endblock content %}
