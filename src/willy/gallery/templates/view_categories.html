@@ -3,5 +3,16 @@
 {% load i18n %}
 
 {% block content %}
+  <h1 id="title">
+    {% trans "View categories" %}
+  </h1>
   {% include "categories_sidebar.html" %}
+  {% for cat in cat_info %}
+    <tr>
+      <td>{{ cat.0 }}</td>
+      <td>{{ cat.1 }}</td>
+      <td>{{ cat.2 }}</td>
+      <td></td>
+    </tr>
+  {% endfor %}
 {% endblock content %}

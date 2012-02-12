@@ -3,6 +3,9 @@
 {% load i18n %}
 
 {% block content %}
+  <h1 id="title">
+    {% trans "Edit pictures" %}
+  </h1>
   {% if user.is_authenticated %}
     {% for picture in pictures %}
       <a href="/gallery/picture/view/{{ picture.id }}">{{ picture.name }}</a>
