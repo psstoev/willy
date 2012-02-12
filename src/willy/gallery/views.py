@@ -88,7 +88,7 @@ def delete_category(request, category_id):
 
 def view_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
-    return render_to_response('category.html',
+    return render_to_response('view_category.html',
                               {'category' : category},
                               context_instance=RequestContext(request))
 
