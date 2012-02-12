@@ -121,9 +121,12 @@ def delete_category(request, category_id):
     return redirect('/session/welcome/')
 
 def view_category(request, category_id):
+    categories = get_categories(request)
     category = get_object_or_404(Category, pk=category_id)
     return render_to_response('view_category.html',
-                              {'category' : category},
+                              {'cat' : category,
+                               'cat_id' : int(category_id),
+                               'categories' : categories},
                               context_instance=RequestContext(request))
 
 @login_required                              

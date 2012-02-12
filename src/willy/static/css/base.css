@@ -152,6 +152,6 @@ section#categories a {
     color: #000;
 }
 
-section#categories a:hover, section#categories a:active {
+section#categories a:hover, section#categories a:active, section#categories a.active {
    background-color: #eeee00;
 }
