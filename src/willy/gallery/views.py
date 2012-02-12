@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext as _
 
 from willy.gallery.models import Category, Picture
-from willy.gallery.forms import CategoryForm, CategoryDeleteForm, PictureUploadForm
+from willy.gallery.forms import CategoryForm, PictureUploadForm
 
 @login_required
 def add_category(request):
