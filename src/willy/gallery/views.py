@@ -1,5 +1,6 @@
 # Create your views here.
 import os, glob
+import hashlib
 from datetime import datetime
 
 from django.shortcuts import render_to_response, redirect, get_object_or_404
@@ -11,7 +12,6 @@ from django.conf import settings
 
 from willy.gallery.models import Category, Picture
 from willy.gallery.forms import CategoryForm, PictureUploadForm, PictureEditForm
-from willy.gallery.utils import save_picture
 
 def get_categories(request):
     if request.user.is_authenticated():
@@ -20,7 +20,6 @@ def get_categories(request):
         categories = Category.objects.all()[:10]
         
     return categories
-
 
 @login_required
 def add_category(request):
@@ -145,14 +144,18 @@ def upload_picture(request):
     form = PictureUploadForm(request.POST, request.FILES)
 
     if form.is_valid():
-        saved_file_name = save_picture(request.user, request.FILES['pic'])
         picture_data = {}
         picture_data['name'] = form.cleaned_data['name']
         picture_data['description'] = form.cleaned_data['description']
         picture_data['owner'] = request.user
         picture_data['uploaded'] = datetime.now()
-        if saved_file_name is not None:
-            picture_data['pic'] = File(open(saved_file_name, 'r'))
+
+        # Generate unique name
+        uploaded_file = request.FILES['pic']
+        message = '_'.join([request.user.username, uploaded_file.name, str(datetime.now())])
+        extension = uploaded_file.name.split('.')[-1]
+        request.FILES['pic'].name = hashlib.sha1(message).hexdigest() + '.' + extension
+        picture_data['pic'] = File(request.FILES['pic'])
 
         picture = Picture(**picture_data)
         picture.save()
