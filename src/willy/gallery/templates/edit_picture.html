@@ -1,11 +1,17 @@
-{% extends "base.html" %}
+{% extends "base_form.html" %}
 
 {% load i18n %}
 
-{% block content %}
-  <form method="post" action="/gallery/picture/edit/{{ picture_id }}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="{% trans "Save" %}" />
-  </form>
-{% endblock content %}
+{% block customcss %}
+  <style type="text/css">
+    #form_container {
+        width: 500px;
+    }
+  </style>
+{% endblock %}
+
+{% block formtitle %}{% trans "Edit picture details" %}{% endblock %}
+
+{% block formaction %}/gallery/picture/edit{% endblock %}
+
+{% block submittitle %}{% trans "Save changes" %}{% endblock %}
