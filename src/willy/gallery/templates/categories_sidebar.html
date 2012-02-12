@@ -7,7 +7,7 @@
       {% trans "Last ten categories" %}
     {% endif %}
   </h2>
-
+  <div>
   {% for category in categories %}
     {% if cat_id == category.id %}
       <a href="/gallery/category/view/{{ category.id }}" class="active">&raquo;&nbsp;&nbsp;{{ category.name|slice:":30" }}{% if category.name|length > 30 %}&nbsp;&hellip;{% endif %}</a>
@@ -15,4 +15,5 @@
       <a href="/gallery/category/view/{{ category.id }}">&raquo;&nbsp;&nbsp;{{ category.name|slice:":30" }}{% if category.name|length > 30 %}&nbsp;&hellip;{% endif %}</a>
     {% endif %}
   {% endfor %}
+  </div>
 </section>
