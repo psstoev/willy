@@ -7,8 +7,8 @@
   <meta charset="utf-8">
   <title>{{ title|default:"Willy" }}</title>
   <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" />
-  {% block extracss %}
-  {% endblock extracss %}
+  {% block extracss %}{% endblock extracss %}
+  {% block customcss %}{% endblock customcss%}
 </head>
 <body>
   <div class="toolbar">
