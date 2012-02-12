@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-12 22:40+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settings.py:45
+msgid "English"
+msgstr "Английски"
+
+#: settings.py:46
+msgid "Bulgarian"
+msgstr "Български"
+
+#: gallery/views.py:50 gallery/views.py:81
+msgid "You don't have enough privileges to edit this category"
+msgstr ""
+
+#: gallery/views.py:54 gallery/views.py:85
+msgid "You can't edit this category"
+msgstr "Не можете да редактирате тази категория"
+
+#: gallery/views.py:113 gallery/views.py:204
+msgid "You don't have enough privileges to delete this category"
+msgstr "Нямате права, за да изтриете тази категория"
+
+#: gallery/views.py:117
+msgid "You can't delete this category"
+msgstr "Не можете да изтриете тази категория"
+
+#: gallery/views.py:174
+msgid "You don't have enough privileges to edit this picture"
+msgstr "Нямате права, за да изтриете тази снимка"
+
+#: gallery/templates/add_category.html:8
+msgid "Add category"
+msgstr "Добавяне на категория"
+
+#: gallery/templates/categories_sidebar.html:5
+msgid "My categories"
+msgstr "Моите категории"
+
+#: gallery/templates/categories_sidebar.html:7
+msgid "Last ten categories"
+msgstr "Последните десет категории"
+
+#: gallery/templates/edit_categories.html:9
+#: gallery/templates/edit_pictures.html:9 session/templates/welcome.html:10
+msgid "Edit"
+msgstr "Редактиране"
+
+#: gallery/templates/edit_categories.html:10
+#: gallery/templates/edit_pictures.html:10 session/templates/welcome.html:11
+msgid "Delete"
+msgstr "Изтриване"
+
+#: gallery/templates/edit_category.html:9
+#: gallery/templates/edit_picture.html:9
+msgid "Save"
+msgstr "Запазване"
+
+#: gallery/templates/upload_picture.html:8 session/templates/welcome.html:17
+msgid "Upload picture"
+msgstr "Качване на снимка"
+
+#: session/forms.py:7
+msgid "First name"
+msgstr "Име"
+
+#: session/forms.py:8
+msgid "Last name"
+msgstr "Фамилия"
+
+#: session/forms.py:9
+msgid "E-mail address"
+msgstr "E-mail адрес"
+
+#: session/templates/change_password.html:16
+#: session/templates/change_password.html:23 templates/base.html:22
+msgid "Change password"
+msgstr "Промяна на парола"
+
+#: session/templates/edit_profile.html:5 templates/base.html:21
+msgid "Edit profile"
+msgstr "Редактиране на профил"
+
+#: session/templates/edit_profile.html:10
+msgid "Save changes"
+msgstr "Запазване на промените"
+
+#: session/templates/login.html:8
+msgid ""
+"User name and password does not match, or there is no such user in the "
+"system."
+msgstr "Потребителското име и паролата не съвпадат, или в системата "
+
+#: session/templates/login.html:13 session/templates/login.html.py:20
+#: templates/base.html:25
+msgid "Log in"
+msgstr "Вход"
+
+#: session/templates/register.html:16
+msgid "Register"
+msgstr "Регистриране"
+
+#: session/templates/register.html:21
+msgid "Create account"
+msgstr "Регистриране"
+
+#: session/templates/welcome.html:7
+msgid "Your categories"
+msgstr "Вашите категории"
+
+#: session/templates/welcome.html:13
+msgid "Add new category"
+msgstr "Добавяне на категория"
+
+#: session/templates/welcome.html:19
+msgid "You are not logged in"
+msgstr "Не сте влезли в системата"
+
+#: templates/base.html:16
+msgid "Hello"
+msgstr "Здравей"
+
+#: templates/base.html:20
+msgid "Home"
+msgstr "Начало"
+
+#: templates/base.html:23
+msgid "Log out"
+msgstr "Изход"
+
+#: templates/base.html:26
+msgid "Registration"
+msgstr "Регистриране"
+
+#: templates/base.html:40
+msgid "View categories"
+msgstr "Покажи категории"
+
+#: templates/base.html:41
+msgid "View pictures"
+msgstr "Покажи снимки"
+
+#: templates/base.html:43
+msgid "Edit my categories"
+msgstr "Редактиране на категории"
+
+#: templates/base.html:44
+msgid "Edit my pictures"
+msgstr "Редактиране на снимки"

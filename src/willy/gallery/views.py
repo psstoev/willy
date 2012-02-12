@@ -233,17 +233,16 @@ def view_pictures(request):
         return render_to_response('view_pictures.html',
                                   {'pictures' : pictures,
                                    'categories' : categories},
-                                  context_instance=RequestContext(request))     
+                                  context_instance=RequestContext(request))
 
-@login_required                                  
+@login_required
 def edit_categories(request):
     categories = Category.objects.filter(owner=request.user)
     if request.method == 'GET':
         return render_to_response('edit_categories.html',
                                   {'user' : request.user,
                                   'categories' : categories},
-                                  context_instance=RequestContext(request))     
-        
+                                  context_instance=RequestContext(request))
 @login_required                                 
 def edit_pictures(request):
     pictures = Picture.objects.filter(owner=request.user)
@@ -251,5 +250,4 @@ def edit_pictures(request):
         return render_to_response('edit_pictures.html',
                                   {'user' : request.user,
                                   'pictures' : pictures},
-                                  context_instance=RequestContext(request))     
-                                                                                            
+                                  context_instance=RequestContext(request))

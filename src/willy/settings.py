@@ -39,6 +39,17 @@ TIME_ZONE = 'Europe/Sofia'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'bg'
 
+_ = lambda s: s
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('bg', _('Bulgarian')),
+)
+
+LOCALE_PATHS = (
+    os.path.join(PROJECT_PATH, 'locale'),
+)
+
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
