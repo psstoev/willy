@@ -7,12 +7,20 @@
     {% trans "View categories" %}
   </h1>
   {% include "categories_sidebar.html" %}
-  {% for cat in cat_info %}
-    <tr>
-      <td>{{ cat.0 }}</td>
-      <td>{{ cat.1 }}</td>
-      <td>{{ cat.2 }}</td>
-      <td></td>
-    </tr>
-  {% endfor %}
+  <table id="categories_table">
+      <tr class="t_header">
+        <th>{% trans "Name" %}</th>
+        <th>{% trans "Subcategories" %}</th>
+        <th>{% trans "Pictures" %}</th>
+        <th>{% trans "Owner" %}</th>
+      </tr>
+    {% for cat in cat_info %}
+      <tr class="{% cycle 'even' 'odd' %}">
+        <td class="left"><a href="/gallery/category/view/{{ cat.0.id }}">{{ cat.0.name|slice:":30" }}{% if cat.0.name|length > 30 %}&nbsp;&hellip;{% endif %}</a></td>
+        <td>{{ cat.1 }}</td>
+        <td>{{ cat.2 }}</td>
+        <td>{{ cat.0.owner }}</td>
+      </tr>
+    {% endfor %}
+  </table>
 {% endblock content %}

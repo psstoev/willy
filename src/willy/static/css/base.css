@@ -147,6 +147,8 @@ h1#title {
 }
 
 section#categories {
+    position: relative;
+    float: left;
     display: block;
     width: 312px;
     background-color: #bbbb00;
@@ -175,7 +177,7 @@ section#categories a {
     padding-bottom: 3px;
     padding-left: 20px;
     font-size: 14px;
-    color: #000;
+    color: #000000;
 }
 
 section#categories a:hover, section#categories a:active, section#categories a.active {
@@ -187,4 +189,61 @@ section#categories a.active {
     padding-bottom: 2px;
     border-top: 1px solid #6b8e23;
     border-bottom: 1px solid #6b8e23;
+}
+
+table#categories_table {
+    position: relative;
+    float: left;
+    width: 628px;
+    margin-left: 20px;
+}
+
+table#categories_table tr.t_header {
+    background-color: #6b8e23;
+    height: 40px;
+    border-top: 1px solid #405414;
+    border-left: 1px solid #405414;
+    border-bottom: 1px solid #405414;
+}
+
+table#categories_table tr.t_header th {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: bold;
+    color: #eeee00;
+    text-align: center;
+    border-right: 1px solid #405414;
+}
+
+table#categories_table tr td {
+    padding: 3px 8px 3px 8px;
+    text-align: center;
+    border-left: 1px solid #6b8e23;
+    border-right: 1px solid #6b8e23;
+    border-bottom: 1px solid #6b8e23;
+}
+
+table#categories_table tr td a {
+    display: block;
+    color: black;
+}
+
+table#categories_table tr.even td a:hover, table#categories_table tr.even td a:active {
+    color: #eeee00;
+}
+
+table#categories_table tr.odd td a:hover, table#categories_table tr.odd td a:active {
+    color: #546d1d;
+}
+
+table#categories_table tr td.left {
+    text-align: left;
+}
+
+table#categories_table tr.even {
+    background-color: #bbbb00;
+}
+
+table#categories_table tr.odd {
+    background-color: #d6e567;
 }
