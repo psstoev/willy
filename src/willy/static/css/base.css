@@ -96,6 +96,7 @@ body {
 header {
     width: 100%;
     overflow: hidden;
+    display: block;
 }
 
 header h1 {
