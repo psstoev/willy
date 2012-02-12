@@ -8,7 +8,7 @@ from django.utils.translation import ugettext as _
 from django.core.files import File
 
 from willy.gallery.models import Category, Picture
-from willy.gallery.forms import CategoryForm, PictureUploadForm
+from willy.gallery.forms import CategoryForm, PictureUploadForm, PictureEditForm
 from willy.gallery.utils import save_picture
 
 @login_required
@@ -61,6 +61,38 @@ def edit_category(request, category_id):
                               {'form' : form,
                                'category_id' : category_id},
                               context_instance=RequestContext(request))
+
+@login_required
+def edit_category(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    if category.owner != request.user:
+        return render_to_response('gallery_error.html',
+                                  {'message' : _("You don't have enough privileges to edit this category")},
+                                  context_instance=RequestContext(request))
+    if category.name == category.owner.username:
+        return render_to_response('gallery_error.html',
+                                  {'message' : _("You can't edit this category")},
+                                  context_instance=RequestContext(request))
+    if request.method == 'GET':
+        return render_to_response('edit_category.html',
+                                  {'form' : CategoryForm(instance=category),
+                                   'category_id' : category_id},
+                                  context_instance=RequestContext(request))
+
+    form = CategoryForm(request.POST)
+    if form.is_valid():
+        category_data = form.cleaned_data
+        
+        category.category_parent = category_data['category_parent']
+        category.name = category_data['name']
+        category.save()
+        return redirect('/session/welcome/')
+
+    return render_to_response('edit_category.html',
+                              {'form' : form,
+                               'category_id' : category_id},
+                              context_instance=RequestContext(request))
+
 
 @login_required
 def delete_category(request, category_id):
@@ -120,6 +152,36 @@ def view_picture(request, picture_id):
     picture = get_object_or_404(Picture, pk=picture_id)
     return render_to_response('view_picture.html',
                               {'picture' : picture},
+                              context_instance=RequestContext(request))
+
+@login_required
+def edit_picture(request, picture_id):
+    picture = get_object_or_404(Picture, pk=picture_id)
+    if picture.owner != request.user:
+        return render_to_response('gallery_error.html',
+                                  {'message' : _("You don't have enough privileges to edit this picture")},
+                                  context_instance=RequestContext(request))
+    if request.method == 'GET':
+        return render_to_response('edit_picture.html',
+                                  {'form' : PictureEditForm(instance=picture),
+                                   'picture_id' : picture_id},
+                                  context_instance=RequestContext(request))
+
+    form = PictureEditForm(request.POST)
+    if form.is_valid():
+        picture_data = form.cleaned_data
+
+        picture.name = form.cleaned_data['name']
+        picture.description = form.cleaned_data['description']
+        for category in form.cleaned_data['category']:
+            picture.category.add(category)
+        picture.save()
+        
+        return redirect('/session/welcome/')
+
+    return render_to_response('edit_picture.html',
+                              {'form' : form,
+                               'picture_id' : picture_id},
                               context_instance=RequestContext(request))
                               
 def view_categories(request):

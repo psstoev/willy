@@ -30,7 +30,22 @@ class PictureUploadForm(forms.ModelForm):
         if queryset is not None:
             self.fields['category'].queryset = queryset
 
-
     class Meta:
         model = Picture
         exclude = ('owner', 'uploaded')
+
+class PictureEditForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        queryset = None
+        if kwargs.has_key('user'):
+            queryset = Category.objects.filter(owner=kwargs.pop('user'))
+        elif kwargs.has_key('instance'):
+            category = kwargs['instance']
+            queryset = Category.objects.filter(owner=category.owner).exclude(name=category.name)
+        super(PictureEditForm, self).__init__(*args, **kwargs)
+        if queryset is not None:
+            self.fields['category'].queryset = queryset
+
+    class Meta:
+        model = Picture
+        fields = ('name', 'description', 'category')
