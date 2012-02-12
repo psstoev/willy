@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
+from thumbs import ImageWithThumbsField
+
 # Create your models here.
 
 class Category(models.Model):
@@ -18,4 +20,4 @@ class Picture(models.Model):
     uploaded = models.DateTimeField('Upload date')
     owner = models.ForeignKey(User)
     category = models.ManyToManyField(Category, related_name='+')
-    pic = models.ImageField(upload_to=settings.USER_FILES_DIR)
+    pic = ImageWithThumbsField(upload_to=settings.USER_FILES_DIR, sizes=((200, 200),))
