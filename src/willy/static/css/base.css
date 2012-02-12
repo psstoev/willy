@@ -45,6 +45,26 @@ body {
     height: 35px;
 }
 
+#greeting {
+    float: left;
+    width: auto;
+}
+
+#greeting span {
+    float: left;
+    margin-top: 6px;
+    margin-right: 4px;
+    margin-left: 15px;
+    color: #ee0;
+}
+
+#greeting a {
+    text-transform: none;
+    font-size: 1em;
+    font-weight: normal;
+    margin-top: 6px;
+}
+
 .toolbar div {
     width: auto;
     height: 100%;

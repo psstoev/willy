@@ -12,6 +12,9 @@
 </head>
 <body>
   <div class="toolbar">
+    {% if user.is_authenticated %}
+      <div id="greeting"><span>{% trans "Hello" %},</span><a href="/session/profile/edit/">{{ user.username }}</a></div>
+    {% endif %}
     <div>
       {% if user.is_authenticated %}
         <a href="/session/welcome/">{% trans "Home" %}</a>
@@ -26,7 +29,13 @@
   </div>
   <div id="wrapper">
     <header>
-      <h1><a href="/" id="willy">Willy</a></h1>
+      <h1>
+        {% if user.is_authenticated %}
+          <a href="/session/welcome" id="willy">Willy</a>
+        {% else %}
+          <a href="/" id="willy">Willy</a>
+        {% endif %}
+      </h1>
     </header>
     <div id="content">
       {% block content %}
