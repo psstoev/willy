@@ -120,3 +120,10 @@ def view_picture(request, picture_id):
     return render_to_response('view_picture.html',
                               {'picture' : picture},
                               context_instance=RequestContext(request))
+                              
+def view_categories(request):
+    categories = Category.objects.all()
+    if request.method == 'GET':
+        return render_to_response('view_categories.html',
+                                  {'categories' : categories},
+                                  context_instance=RequestContext(request))

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+  {% for category in categories %}
+    <a href="/gallery/category/view/{{ category.id }}">{{ category.name }}</a>
+  {% endfor %}
+{% endblock content %}
