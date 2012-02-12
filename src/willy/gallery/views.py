@@ -123,10 +123,15 @@ def delete_category(request, category_id):
 def view_category(request, category_id):
     categories = get_categories(request)
     category = get_object_or_404(Category, pk=category_id)
+    subcategories = Category.objects.filter(category_parent=category)
+    pictures = Picture.objects.filter(category=category)
     return render_to_response('view_category.html',
                               {'cat' : category,
                                'cat_id' : int(category_id),
-                               'categories' : categories},
+                               'categories' : categories,
+                               'subcategories' : subcategories,
+                               'pictures' : pictures,
+                               },
                               context_instance=RequestContext(request))
 
 @login_required                              

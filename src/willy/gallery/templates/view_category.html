@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+
 {% block content %}
-{{ cat.name }}
   {% include "categories_sidebar.html" %}
+  <div id="category">
+    <h2>{% trans "Category" %} {{ cat.name }}</h1>
+    <section id="subcategories">
+      <h3>{% trans "Subcategories" %}</h3>
+      {% for subcat in subcategories %}
+        <a href="/gallery/category/view/{{ subcat.id }}/">{{ subcat.name }}</a>
+      {% endfor %}
+    </section>
+    <section id="pictures">
+      <h3>{% trans "Pictures" %}</h3>
+      {% for picture in pictures %}
+        <img src="{{ picture.pic.url_200x200 }}" />
+      {% endfor %}
+    </section>
+  </div>
 {% endblock content %}
