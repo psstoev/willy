@@ -20,6 +20,13 @@ class CategoryDeleteForm(forms.Form):
     selected = forms.BooleanField(widget=forms.HiddenInput)
     
 class PictureUploadForm(forms.ModelForm):
+    def __init__(self, user=None, *args, **kwargs):
+        super(PictureUploadForm, self).__init__(*args, **kwargs)
+        if hasattr(self.instance, 'owner'):
+            self.fields['category'].queryset=Category.objects.filter(owner=self.instance.owner).exclude(name=self.instance.name)
+        elif user:
+            self.fields['category'].queryset=Category.objects.filter(owner=user)
+
     class Meta:
         model = Picture
         exclude = ('owner', 'uploaded', 'pic')
