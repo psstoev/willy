@@ -82,7 +82,8 @@ def view_category(request, category_id):
     return render_to_response('category.html',
                               {'category' : category},
                               context_instance=RequestContext(request))
-                              
+
+@login_required                              
 def upload_picture(request):
     if request.method == 'GET':
         return render_to_response('upload_picture.html',
@@ -120,3 +121,36 @@ def view_picture(request, picture_id):
     return render_to_response('view_picture.html',
                               {'picture' : picture},
                               context_instance=RequestContext(request))
+                              
+def view_categories(request):
+    categories = Category.objects.all()
+    if request.method == 'GET':
+        return render_to_response('view_categories.html',
+                                  {'categories' : categories},
+                                  context_instance=RequestContext(request))
+                                  
+def view_pictures(request):
+    pictures = Picture.objects.all()
+    if request.method == 'GET':
+        return render_to_response('view_pictures.html',
+                                  {'pictures' : pictures},
+                                  context_instance=RequestContext(request))     
+
+@login_required                                  
+def edit_categories(request):
+    categories = Category.objects.filter(owner=request.user)
+    if request.method == 'GET':
+        return render_to_response('edit_categories.html',
+                                  {'user' : request.user,
+                                  'categories' : categories},
+                                  context_instance=RequestContext(request))     
+        
+@login_required                                 
+def edit_pictures(request):
+    pictures = Picture.objects.filter(owner=request.user)
+    if request.method == 'GET':
+        return render_to_response('edit_pictures.html',
+                                  {'user' : request.user,
+                                  'pictures' : pictures},
+                                  context_instance=RequestContext(request))     
+                                                                                            

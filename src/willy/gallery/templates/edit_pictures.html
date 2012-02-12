@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    {% for picture in pictures %}
+      <a href="/gallery/picture/view/{{ picture.id }}">{{ picture.name }}</a>
+      <a href="/gallery/picture/edit/{{ picture.id }}">{% trans "Edit" %}</a>
+      <a href="/gallery/picture/delete/{{ picture.id }}">{% trans "Delete" %}</a>
+    {% endfor %}
+  {% endif %}
+{% endblock content %}

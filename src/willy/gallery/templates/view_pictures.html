@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+  {% for picture in pictures %}
+    <a href="/gallery/picture/view/{{ picture.id }}">{{ picture.name }}</a>
+  {% endfor %}
+{% endblock content %}
