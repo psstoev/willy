@@ -5,9 +5,11 @@ from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext as _
+from django.core.files import File
 
 from willy.gallery.models import Category, Picture
 from willy.gallery.forms import CategoryForm, PictureUploadForm
+from willy.gallery.utils import save_picture
 
 @login_required
 def add_category(request):
@@ -87,13 +89,18 @@ def upload_picture(request):
                                   {'form' : PictureUploadForm()},
                                   context_instance=RequestContext(request))
 
-    form = PictureUploadForm(request.POST)
+    
+    form = PictureUploadForm(request.POST, request.FILES)
+
     if form.is_valid():
+        saved_file_name = save_picture(request.user, request.FILES['pic'])
         picture_data = {}
         picture_data['name'] = form.cleaned_data['name']
         picture_data['description'] = form.cleaned_data['description']
         picture_data['owner'] = request.user
         picture_data['uploaded'] = datetime.now()
+        if saved_file_name is not None:
+            picture_data['pic'] = File(open(saved_file_name, 'r'))
 
         picture = Picture(**picture_data)
         picture.save()

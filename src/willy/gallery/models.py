@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 
@@ -17,4 +18,4 @@ class Picture(models.Model):
     uploaded = models.DateTimeField('Upload date')
     owner = models.ForeignKey(User)
     category = models.ManyToManyField(Category, related_name='+')
-    pic = models.ImageField(upload_to='photos')
+    pic = models.ImageField(upload_to=settings.USER_FILES_DIR)

@@ -21,4 +21,4 @@ class CategoryForm(forms.ModelForm):
 class PictureUploadForm(forms.ModelForm):
     class Meta:
         model = Picture
-        exclude = ('owner', 'uploaded', 'pic')
+        exclude = ('owner', 'uploaded')

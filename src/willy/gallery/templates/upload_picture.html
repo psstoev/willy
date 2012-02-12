@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block content %}
-  <form method="post" action="/gallery/picture/upload/">
+  <form enctype="multipart/form-data" method="post" action="/gallery/picture/upload/">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="{% trans 'Upload picture' %}" />

@@ -155,3 +155,5 @@ LOGGING = {
         },
     }
 }
+
+USER_FILES_DIR = 'user_pictures'
