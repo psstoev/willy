@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+{% extends "base_form.html" %}
 {% load i18n %}
 
-{% block content %}
-  <form method="post" action="/session/profile/edit/">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="{% trans 'Save changes' %}" />
-  </form>
-{% endblock content %}
+{% block formtitle %}
+  {% trans "Edit profile" %}
+{% endblock %}
+
+{% block formaction %}/session/profile/edit/{% endblock %}
+
+{% block submittitle %}{% trans "Save changes" %}{% endblock %}

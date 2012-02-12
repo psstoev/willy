@@ -45,6 +45,26 @@ body {
     height: 35px;
 }
 
+#greeting {
+    float: left;
+    width: auto;
+}
+
+#greeting span {
+    float: left;
+    margin-top: 6px;
+    margin-right: 4px;
+    margin-left: 15px;
+    color: #ee0;
+}
+
+#greeting a {
+    text-transform: none;
+    font-size: 1em;
+    font-weight: normal;
+    margin-top: 6px;
+}
+
 .toolbar div {
     width: auto;
     height: 100%;
@@ -73,9 +93,34 @@ body {
     margin-right: auto;
 }
 
+header {
+    width: 100%;
+    overflow: hidden;
+}
+
 header h1 {
     margin-left: 20px;
     margin-bottom: 10px;
     font-size: 4em;
     font-family: 'Palatino linotype', 'Book Antiqua', Palatino, serif;
+    float: left;
+}
+
+header a, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #000
+}
+
+nav {
+    float: right;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 35px;
+    text-decoration: none;
+    color: #ee0;
+}
+
+nav a {
+    margin-left: 10px;
 }

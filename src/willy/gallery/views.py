@@ -86,7 +86,7 @@ def view_category(request, category_id):
 def upload_picture(request):
     if request.method == 'GET':
         return render_to_response('upload_picture.html',
-                                  {'form' : PictureUploadForm()},
+                                  {'form' : PictureUploadForm(user=request.user)},
                                   context_instance=RequestContext(request))
 
     

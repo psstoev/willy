@@ -2,7 +2,7 @@
 
 {% block extracss %}
   <style type="text/css">
-    #login {
+    #form_container {
         margin-left: auto;
         margin-right: auto;
         margin-top: 30px;
@@ -11,20 +11,20 @@
         min-width: 400px;
     }
 
-    #login h2 {
+    #form_container h2 {
         padding: 5px 15px;
         background-color: #6b8e23;
         color: #ee0;
         font-size: 1.2em;
     }
 
-    #login form {
+    #form_container form {
         margin: 10px;
         height: 100%;
     }
 
-    #login form p {
-        margin: 5px;
+    #form_container form p {
+        margin: 10px;
         overflow: hidden;
     }
 
@@ -43,9 +43,22 @@
 
     #submit input {
         margin: 5px;
-        width: 25%;
+        padding: 5px;
+        width: auto;
         height: 80%;
         float: right;
+    }
+    
+    .helptext {
+        float: right;
+        font-size: 0.8em;
+        clear: both;
+        margin-bottom: 8px;
+    }
+
+    .errorlist {
+        clear: both;
+        color: red;
     }
   </style>
 
@@ -54,7 +67,7 @@
 {% block content %}
   {% block extramessage %}{% endblock %}
 
-  <div id="login">
+  <div id="form_container">
     <h2>{% block formtitle %}{% endblock %}</h2>
     <form method="post" action="{% block formaction %}{% endblock %}">
       {% csrf_token %}
