@@ -127,3 +127,10 @@ def view_categories(request):
         return render_to_response('view_categories.html',
                                   {'categories' : categories},
                                   context_instance=RequestContext(request))
+                                  
+def view_pictures(request):
+    pictures = Picture.objects.all()
+    if request.method == 'GET':
+        return render_to_response('view_pictures.html',
+                                  {'pictures' : pictures},
+                                  context_instance=RequestContext(request))                                  
