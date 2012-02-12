@@ -3,6 +3,7 @@
 {% load i18n %}
 
 {% block content %}
+  {% include "categories_sidebar.html" %}
   {% for picture in pictures %}
     <a href="/gallery/picture/view/{{ picture.id }}">{{ picture.name }}</a>
   {% endfor %}
