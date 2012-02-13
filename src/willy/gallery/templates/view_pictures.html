@@ -1,13 +1,40 @@
 {% extends "base.html" %}
 
 {% load i18n %}
-
+{% block extrajs %}
+  <script src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+  <script>
+    $(window).load(function() {
+    $("div.image").mouseover(function()
+      {
+        $(this).find(".action").css("display", "block");
+      }
+    );
+    $("div.image").mouseout(function()
+      {
+        $(this).find(".action").css("display", "none");
+      }
+    );
+    });
+  </script>
+{% endblock %}
 {% block content %}
   <h1 id="title">
     {% trans "View pictures" %}
   </h1>
   {% include "categories_sidebar.html" %}
-  {% for picture in pictures %}
-    <a href="/gallery/picture/view/{{ picture.id }}">{{ picture.name }}</a>
-  {% endfor %}
+  <div class="content">
+  <section id="pictures">
+    {% for picture in pictures %}
+      <div class="image">
+          <a href="{{ picture.pic.url }}">
+            <a href="#"><img src="{{ STATIC_URL }}images/edit.png" class="action edit_button" /></a>
+            <img src="{{ STATIC_URL }}images/delete.png" class="action delete_button" />
+            <img src="{{ picture.pic.url_149x149 }}" alt="{{ picture.description }}" />
+          </a>
+          <span>{{ picture.name|slice:":14"}}{% if category.name|length > 14 %}&nbsp;&hellip;{% endif %}</span>
+      </div>
+    {% endfor %}
+  </section>
+  </div>
 {% endblock content %}
