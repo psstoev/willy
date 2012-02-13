@@ -26,13 +26,13 @@
   <div class="content">
   <section id="pictures">
     {% for picture in pictures %}
-      <div class="image">
-          <a href="{{ picture.pic.url }}">
-            <a href="#"><img src="{{ STATIC_URL }}image/edit.png" class="action edit_button" /></a>
-            <img src="{{ STATIC_URL }}image/delete.png" class="action delete_button" />
-            <img src="{{ picture.pic.url_149x149 }}" alt="{{ picture.description }}" />
-          </a>
-          <span>{{ picture.name|slice:":14"}}{% if category.name|length > 14 %}&nbsp;&hellip;{% endif %}</span>
+      <div class="image"> 
+        <a href="/gallery/picture/edit/{{ picture.id }}"><img src="{{ STATIC_URL }}image/edit.png" class="action edit_button" /></a>
+        <a href="/gallery/picture/delete/{{ picture.id }}"><img src="{{ STATIC_URL }}image/delete.png" class="action delete_button" /></a>
+        <a href="{{ picture.pic.url }}">
+        <img src="{{ picture.pic.url_149x149 }}" alt="{{ picture.description }}" />
+      </a>
+        <span>{{ picture.name|slice:":14"}}{% if category.name|length > 14 %}&nbsp;&hellip;{% endif %}</span>
       </div>
     {% endfor %}
   </section>
