@@ -69,7 +69,7 @@
 
   <div id="form_container">
     <h2>{% block formtitle %}{% endblock %}</h2>
-    <form method="post" action="{% block formaction %}{% endblock %}">
+    <form {% if form.is_multipart %}enctype="multipart/form-data"{% endif %} method="post" action="{% block formaction %}{% endblock %}">
       {% csrf_token %}
       <div id="fields">
         {{ form.as_p }}
