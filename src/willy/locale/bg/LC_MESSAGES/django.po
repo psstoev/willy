@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 13:33+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-02-13 13:56+0200\n"
+"PO-Revision-Date: 2012-02-13 13:53+0200\n"
+"Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -33,12 +32,16 @@ msgstr "Нямате права да редактирате тази катег�
 msgid "You can't edit this category"
 msgstr "Не можете да редактирате тази категория"
 
-#: gallery/views.py:113 gallery/views.py:223
+#: gallery/views.py:113
 msgid "You don't have enough privileges to delete this category"
 msgstr "Нямате права, за да изтриете тази категория"
 
 #: gallery/views.py:192
 msgid "You don't have enough privileges to edit this picture"
+msgstr "Нямате права, за да редактирате тази снимка"
+
+#: gallery/views.py:223
+msgid "You don't have enough privileges to delete this picture"
 msgstr "Нямате права, за да изтриете тази снимка"
 
 #: gallery/templates/add_category.html:5
@@ -154,8 +157,9 @@ msgstr "Редактиране на профил"
 msgid ""
 "User name and password does not match, or there is no such user in the "
 "system."
-msgstr "Потребителското име и паролата не съвпадат, или в системата "
-"няма такъв потребител"
+msgstr ""
+"Потребителското име и паролата не съвпадат, или в системата няма такъв "
+"потребител"
 
 #: session/templates/login.html:13 session/templates/login.html.py:20
 #: templates/base.html:27
@@ -197,9 +201,3 @@ msgstr "Изход"
 #: templates/base.html:28
 msgid "Registration"
 msgstr "Регистриране"
-
-#~ msgid "You can't delete this category"
-#~ msgstr "Не можете да изтриете тази категория"
-
-#~ msgid "Save"
-#~ msgstr "Запазване"

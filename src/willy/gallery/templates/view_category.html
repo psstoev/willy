@@ -1,6 +1,24 @@
 {% extends "base.html" %}
 
 {% load i18n %}
+
+{% block extrajs %}
+  <script src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
+  <script>
+    $(window).load(function() {
+    $("div.image").mouseover(function()
+      {
+        $(this).find(".action").css("display", "block");
+      }
+    );
+    $("div.image").mouseout(function()
+      {
+        $(this).find(".action").css("display", "none");
+      }
+    );
+    });
+  </script>
+{% endblock %}
 {% block content %}
   <h1 id="title">
     {% trans "View category" %}
@@ -13,6 +31,7 @@
     <h2>
       {% trans "Category" %} {{ cat.name }}
       {% if user.is_authenticated %}
+        <a href="/gallery/category/delete/{{ cat.id }}" id="delete">{% trans "Delete" %}</a>
         <a href="/gallery/category/edit/{{ cat.id }}" id="edit">{% trans "Edit" %}</a>
       {% endif %}
     </h2>
@@ -29,6 +48,10 @@
       <h3>{% trans "Pictures" %}</h3>
       {% for picture in pictures %}
         <div class="image">
+          {% if user.is_authenticated and user.id == picture.owner.id %} 
+            <a href="/gallery/picture/edit/{{ picture.id }}"><img src="{{ STATIC_URL }}image/edit.png" class="action edit_button" /></a>
+            <a href="/gallery/picture/delete/{{ picture.id }}"><img src="{{ STATIC_URL }}image/delete.png" class="action delete_button" /></a>
+          {% endif %}
           <a href="{{ picture.pic.url }}">
             <img src="{{ picture.pic.url_149x149 }}" alt="{{ picture.description }}" />
           </a>
