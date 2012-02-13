@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block extrajs %}
+  <script type="text/javascript">
+    $(window).load(function() {
+        if (confirm("{% trans 'Are you sure you want to delete this picture' %}?")) {
+            $('#deleteform').submit();
+        } else {
+            window.location.replace("/gallery/pictures/");
+        };
+    });
+  </script>
+{% endblock extrajs %}
+
+{% block content %}
+  <form id="deleteform" method="post" action="/gallery/picture/delete/{{ picture_id }}" style="display:none">
+    {% csrf_token %}
+    <input type="submit" />
+  </form>
+{% endblock content %}

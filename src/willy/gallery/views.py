@@ -6,6 +6,7 @@ from datetime import datetime
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
 from django.utils.translation import ugettext as _
 from django.core.files import File
 from django.conf import settings
@@ -208,19 +209,25 @@ def edit_picture(request, picture_id):
                               context_instance=RequestContext(request))
 
 @login_required
+@csrf_protect
 def delete_picture(request, picture_id):
     picture = get_object_or_404(Picture, pk=picture_id)
     if picture.owner != request.user:
         return render_to_response('gallery_error.html',
                                   {'message' : _("You don't have enough privileges to delete this category")},
                                   context_instance=RequestContext(request))
+    if request.method == 'GET':
+        return render_to_response('delete_picture.html',
+                                  {'picture_id' : picture_id},
+                                  context_instance=RequestContext(request))
+    else:
+        name = os.path.join(settings.MEDIA_ROOT, '.'.join(picture.pic.name.split('.')[:-1]))
+        for filename in glob.glob(name + '*'):
+            os.remove(filename)
+        picture.delete()
 
-    name = os.path.join(settings.MEDIA_ROOT, '.'.join(picture.pic.name.split('.')[:-1]))
-    for filename in glob.glob(name + '*'):
-        os.remove(filename)
-    picture.delete()
-
-    return redirect('/session/welcome/')
+        return redirect('/gallery/pictures/')
+    return redirect('/gallery/pictures/')
                               
 def view_categories(request):
     categories = get_categories(request)
