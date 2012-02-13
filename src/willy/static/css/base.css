@@ -272,13 +272,13 @@ div#category h2 {
     border-bottom: 1px solid #405414;
 }
 
-div#category a#edit {
+div#category a#delete, div#category a#edit {
     color: #eeee00;
     float: right;
     margin-right: 20px;
 }
 
-div#category a#edit:hover, div#category a#edit:active {
+div#category a#delete:hover, div#category a#delete:active, div#category a#edit:hover, div#category a#edit:active {
     padding-bottom: 3px;
     margin-right: 20px;
     border-bottom: 2px solid #eeee00;
@@ -335,4 +335,27 @@ div.image span {
 
 .action {
     display: none;
+}
+
+span.blank {
+    display: block;
+    margin-bottom: 15px;
+}
+
+ul.decorated li{
+    list-style-type:disc;
+    list-style-position: inside;
+    margin-left: 20px;
+}
+
+ul.decorated li ul li{
+    list-style-type:circle;
+    list-style-position: inside;
+    margin-left: 20px;
+}
+
+a.decoration {
+    color: blue;
+    margin-left: 20px;
+    text-decoration:underline;
 }

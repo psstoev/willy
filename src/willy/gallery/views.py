@@ -36,7 +36,7 @@ def add_category(request):
         
         category = Category(**category_data)
         category.save()
-        return redirect('/session/welcome/')
+        return redirect('/')
 
     return render_to_response('add_category.html',
                               {'form' : form},
@@ -66,7 +66,7 @@ def edit_category(request, category_id):
         category.category_parent = category_data['category_parent']
         category.name = category_data['name']
         category.save()
-        return redirect('/session/welcome/')
+        return redirect('/')
 
     return render_to_response('edit_category.html',
                               {'form' : form,
@@ -97,7 +97,7 @@ def edit_category(request, category_id):
         category.category_parent = category_data['category_parent']
         category.name = category_data['name']
         category.save()
-        return redirect('/session/welcome/')
+        return redirect('/')
 
     return render_to_response('edit_category.html',
                               {'form' : form,
@@ -171,7 +171,7 @@ def upload_picture(request):
             picture.category.add(category)
         picture.save()
         
-        return redirect('/session/welcome/')
+        return redirect('/')
 
     return render_to_response('upload_picture.html',
                               {'form' : form},
@@ -207,7 +207,7 @@ def edit_picture(request, picture_id):
             picture.category.add(category)
         picture.save()
         
-        return redirect('/session/welcome/')
+        return redirect('/')
 
     return render_to_response('edit_picture.html',
                               {'form' : form,
@@ -220,7 +220,7 @@ def delete_picture(request, picture_id):
     picture = get_object_or_404(Picture, pk=picture_id)
     if picture.owner != request.user:
         return render_to_response('gallery_error.html',
-                                  {'message' : _("You don't have enough privileges to delete this category")},
+                                  {'message' : _("You don't have enough privileges to delete this picture")},
                                   context_instance=RequestContext(request))
     if request.method == 'GET':
         return render_to_response('delete_object.html',
