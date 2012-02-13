@@ -5,17 +5,17 @@
 {% block extrajs %}
   <script type="text/javascript">
     $(window).load(function() {
-        if (confirm("{% trans 'Are you sure you want to delete this picture' %}?")) {
+        if (confirm("{% trans 'Are you sure you want to delete ' %}{{ object_name }}?")) {
             $('#deleteform').submit();
         } else {
-            window.location.replace("/gallery/pictures/");
+            window.location.replace("{{ redirect_url }}");
         };
     });
   </script>
 {% endblock extrajs %}
 
 {% block content %}
-  <form id="deleteform" method="post" action="/gallery/picture/delete/{{ picture_id }}" style="display:none">
+  <form id="deleteform" method="post" action="/gallery/{{ object_type }}/delete/{{ object_id }}" style="display:none">
     {% csrf_token %}
     <input type="submit" />
   </form>
