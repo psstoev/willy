@@ -220,7 +220,7 @@ def delete_picture(request, picture_id):
     picture = get_object_or_404(Picture, pk=picture_id)
     if picture.owner != request.user:
         return render_to_response('gallery_error.html',
-                                  {'message' : _("You don't have enough privileges to delete this category")},
+                                  {'message' : _("You don't have enough privileges to delete this picture")},
                                   context_instance=RequestContext(request))
     if request.method == 'GET':
         return render_to_response('delete_object.html',
