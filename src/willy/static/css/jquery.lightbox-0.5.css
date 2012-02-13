@@ -100,7 +100,17 @@
 	padding-bottom: 0.7em;	
 }
 
-div#lightbox_pic_info {
-    width: auto;
-    background-color: red;
+img#lightbox-image {
+    max-width: 960px;
+}
+
+div#lightbox_picinfo span.lightbox_label {
+    margin: 5px 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+div#lightbox_picinfo span.lightbox_picdata {
+    margin: 5px 5px;
+    font-size: 1.4em;
 }
