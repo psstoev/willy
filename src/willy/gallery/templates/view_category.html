@@ -3,20 +3,32 @@
 {% load i18n %}
 
 {% block content %}
+  <h1 id="title">
+    {% trans "View category" %}
+  </h1>
   {% include "categories_sidebar.html" %}
   <div id="category">
-    <h2>{% trans "Category" %} {{ cat.name }}</h1>
+    <h2>{% trans "Category" %} {{ cat.name }}</h2>
     <section id="subcategories">
       <h3>{% trans "Subcategories" %}</h3>
       {% for subcat in subcategories %}
-        <a href="/gallery/category/view/{{ subcat.id }}/">{{ subcat.name }}</a>
+        <a href="/gallery/category/view/{{ subcat.id }}/">&raquo;&nbsp;&nbsp;{{ subcat.name }}</a>
       {% endfor %}
+      {% if not subcategories %}
+        {% trans "There are no subcategories added to this category" %}
+      {% endif %}
     </section>
     <section id="pictures">
       <h3>{% trans "Pictures" %}</h3>
       {% for picture in pictures %}
-        <img src="{{ picture.pic.url_200x200 }}" />
+        <div class="image">
+          <img src="{{ picture.pic.url_149x149 }}" />
+          <span>{{ picture.name|slice:":14"}}{% if category.name|length > 14 %}&nbsp;&hellip;{% endif %}</span>
+        </div>
       {% endfor %}
+      {% if not pictures %}
+        {% trans "There are no images added to this category" %}
+      {% endif %}
     </section>
   </div>
 {% endblock content %}
