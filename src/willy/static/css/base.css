@@ -336,3 +336,26 @@ div.image span {
 .action {
     display: none;
 }
+
+span.blank {
+    display: block;
+    margin-bottom: 15px;
+}
+
+ul.decorated li{
+    list-style-type:disc;
+    list-style-position: inside;
+    margin-left: 20px;
+}
+
+ul.decorated li ul li{
+    list-style-type:circle;
+    list-style-position: inside;
+    margin-left: 20px;
+}
+
+a.decoration {
+    color: blue;
+    margin-left: 20px;
+    text-decoration:underline;
+}
