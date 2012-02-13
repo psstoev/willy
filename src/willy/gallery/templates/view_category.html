@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% load i18n %}
-
 {% block content %}
   <h1 id="title">
     {% trans "View category" %}
@@ -22,7 +21,9 @@
       <h3>{% trans "Pictures" %}</h3>
       {% for picture in pictures %}
         <div class="image">
-          <img src="{{ picture.pic.url_149x149 }}" />
+          <a href="{{ picture.pic.url }}">
+            <img src="{{ picture.pic.url_149x149 }}" alt="{{ picture.description }}" />
+          </a>
           <span>{{ picture.name|slice:":14"}}{% if category.name|length > 14 %}&nbsp;&hellip;{% endif %}</span>
         </div>
       {% endfor %}
