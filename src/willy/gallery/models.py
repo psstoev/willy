@@ -20,4 +20,4 @@ class Picture(models.Model):
     uploaded = models.DateTimeField('Upload date')
     owner = models.ForeignKey(User)
     category = models.ManyToManyField(Category, related_name='+')
-    pic = ImageWithThumbsField(upload_to=settings.USER_FILES_DIR, sizes=((200, 200),))
+    pic = ImageWithThumbsField(upload_to=settings.USER_FILES_DIR, sizes=((149, 149),))
