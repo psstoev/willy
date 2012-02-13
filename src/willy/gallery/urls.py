@@ -16,7 +16,5 @@ urlpatterns = patterns('gallery.views',
     
     # Menu URLs
     url(r'^pictures/?$', 'view_pictures'),
-    url(r'^categories/?$', 'view_categories'),
-    url(r'^pictures/edit/?$', 'edit_pictures'),
-    url(r'^categories/edit/?$', 'edit_categories'),    
+    url(r'^categories/?$', 'view_categories'),  
 )

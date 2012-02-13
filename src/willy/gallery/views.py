@@ -131,12 +131,13 @@ def view_category(request, category_id):
     subcategories = Category.objects.filter(category_parent=category)
     pictures = Picture.objects.filter(category=category)
     return render_to_response('view_category.html',
-                              {'cat' : category,
-                               'cat_id' : int(category_id),
-                               'categories' : categories,
-                               'subcategories' : subcategories,
-                               'pictures' : pictures,
-                               },
+                              {'user' : request.user,
+                              'cat' : category,
+                              'cat_id' : int(category_id),
+                              'categories' : categories,
+                              'subcategories' : subcategories,
+                              'pictures' : pictures,
+                              },
                               context_instance=RequestContext(request))
 
 @login_required                              
@@ -245,8 +246,10 @@ def view_categories(request):
     cat_info = zip(all_categories, subcat_count, picture_count)
     if request.method == 'GET':
         return render_to_response('view_categories.html',
-                                  {'categories' : categories,
-                                   'cat_info' : cat_info},
+                                  {'user' : request.user,
+                                  'categories' : categories,
+                                  'cat_info' : cat_info
+                                  },
                                   context_instance=RequestContext(request))
                                   
 def view_pictures(request):
@@ -254,23 +257,8 @@ def view_pictures(request):
     pictures = Picture.objects.all()
     if request.method == 'GET':
         return render_to_response('view_pictures.html',
-                                  {'pictures' : pictures,
-                                   'categories' : categories},
-                                  context_instance=RequestContext(request))
-
-@login_required
-def edit_categories(request):
-    categories = Category.objects.filter(owner=request.user)
-    if request.method == 'GET':
-        return render_to_response('edit_categories.html',
                                   {'user' : request.user,
-                                  'categories' : categories},
-                                  context_instance=RequestContext(request))
-@login_required                                 
-def edit_pictures(request):
-    pictures = Picture.objects.filter(owner=request.user)
-    if request.method == 'GET':
-        return render_to_response('edit_pictures.html',
-                                  {'user' : request.user,
-                                  'pictures' : pictures},
+                                  'pictures' : pictures,
+                                  'categories' : categories
+                                  },
                                   context_instance=RequestContext(request))
