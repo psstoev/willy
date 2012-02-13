@@ -130,7 +130,19 @@ def view_category(request, category_id):
     categories = get_categories(request)
     category = get_object_or_404(Category, pk=category_id)
     subcategories = Category.objects.filter(category_parent=category)
-    pictures = Picture.objects.filter(category=category)
+
+    paginator = Paginator(Picture.objects.all(), 1)
+    # Make sure page request is an int. If not, deliver first page.
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+    # If page request (9999) is out of range, deliver last page of results.
+    try:
+        pictures = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        pictures = paginator.page(paginator.num_pages)
+
     return render_to_response('view_category.html',
                               {'user' : request.user,
                               'cat' : category,
