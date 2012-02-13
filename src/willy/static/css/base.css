@@ -148,6 +148,18 @@ h1#title {
     border-bottom: 1px solid #405414;
 }
 
+#title a {
+    color: #eeee00;
+    float: right;
+    margin-right: 20px;
+}
+
+#title a:hover, #title a:active {
+    padding-bottom: 3px;
+    margin-right: 20px;
+    border-bottom: 2px solid #eeee00;
+}
+
 section#categories {
     position: relative;
     float: left;
@@ -260,6 +272,18 @@ div#category h2 {
     border-bottom: 1px solid #405414;
 }
 
+div#category a#edit {
+    color: #eeee00;
+    float: right;
+    margin-right: 20px;
+}
+
+div#category a#edit:hover, div#category a#edit:active {
+    padding-bottom: 3px;
+    margin-right: 20px;
+    border-bottom: 2px solid #eeee00;
+}
+
 h3 {
     display: block;
     margin-top: 20px;
@@ -281,6 +305,7 @@ div.image {
     position: relative;
     float: left;
     width: 157px;
+    height: 181px;
     background-color: #6b8e23;
     margin: 0px 23px 26px 23px;
     padding: 3px 3px 3px 3px;
@@ -296,6 +321,7 @@ div.image span {
     color: #eeee00;
     padding-bottom: 4px;
     margin-left: 4px;
+    font-size: 14px;
 }
 
 .edit_button {
