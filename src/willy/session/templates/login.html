@@ -3,12 +3,6 @@
 {% load url from future %}
 {% load i18n %}
 
-{% block extramessage %}
-  {% if form.errors %}
-    <p>{% trans "User name and password does not match, or there is no such user in the system."%}</p>
-  {% endif %}
-{% endblock %}
-
 {% block formtitle %}
   {% trans "Log in" %}
 {% endblock %}
@@ -20,5 +14,5 @@
 {% block submittitle %}{% trans "Log in" %}{% endblock %}
 
 {% block formhidden %}
-  <input type="hidden" name="next" value="{{ next|default:'/session/welcome/' }}" />
+  <input type="hidden" name="next" value="{{ next|default:'/' }}" />
 {% endblock %}

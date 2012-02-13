@@ -19,7 +19,7 @@
     {% endif %}
     <div>
       {% if user.is_authenticated %}
-        <a href="/session/welcome/">{% trans "Home" %}</a>
+        <a href="/">{% trans "Home" %}</a>
         <a href="/session/profile/edit/">{% trans "Edit profile" %}</a>
         <a href="/session/profile/edit/change_password/">{% trans "Change password" %}</a>
         <a href="/session/logout">{% trans "Log out" %}</a>
@@ -32,11 +32,7 @@
   <div id="wrapper">
     <header>
       <h1>
-        {% if user.is_authenticated %}
-          <a href="/session/welcome" id="willy">Willy</a>
-        {% else %}
-          <a href="/" id="willy">Willy</a>
-        {% endif %}
+        <a href="/" id="willy">Willy</a>
       </h1>
       <nav>
         <a href="/gallery/categories/">{% trans "View categories" %}</a>

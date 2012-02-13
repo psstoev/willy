@@ -13,18 +13,6 @@ def index(request):
     return render_to_response('index.html',
                               context_instance=RequestContext(request))
 
-@login_required
-def welcome(request):
-    categories = Category.objects.filter(owner=request.user)
-    pictures = Picture.objects.filter(owner=request.user)
-
-    return render_to_response('welcome.html',
-                              {'user' : request.user,
-                               'title' : request.user.username,
-                               'categories' : categories,
-                               'pictures' : pictures},
-                              context_instance=RequestContext(request))
-
 def register(request):
     if request.method == 'GET':
         return render_to_response('register.html',
@@ -49,7 +37,7 @@ def register(request):
 
         user = authenticate(username=user_data['username'], password=user_data['password'])
         login(request, user)
-        return redirect('/session/welcome/')
+        return redirect('/')
 
     return render_to_response('register.html',
                               {'form' : form},
@@ -70,7 +58,7 @@ def edit_profile(request):
         user.last_name = form.cleaned_data['last_name']
         user.email = form.cleaned_data['email']
         user.save()
-        return redirect('/session/welcome/')
+        return redirect('/')
 
     return render_to_response('edit_profile.html',
                               {'form' : form},
