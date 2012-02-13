@@ -27,11 +27,11 @@
 			// Configuration related to navigation
 			fixedNavigation:		false,		// (boolean) Boolean that informs if the navigation (next and prev button) will be fixed or not in the interface.
 			// Configuration related to images
-			imageLoading:			'images/lightbox-ico-loading.gif',		// (string) Path and the name of the loading icon
-			imageBtnPrev:			'images/lightbox-btn-prev.gif',			// (string) Path and the name of the prev button image
-			imageBtnNext:			'images/lightbox-btn-next.gif',			// (string) Path and the name of the next button image
-			imageBtnClose:			'images/lightbox-btn-close.gif',		// (string) Path and the name of the close btn
-			imageBlank:				'images/lightbox-blank.gif',			// (string) Path and the name of a blank image (one pixel)
+			imageLoading:			'/static/images/lightbox-ico-loading.gif',		// (string) Path and the name of the loading icon
+			imageBtnPrev:			'/static/images/lightbox-btn-prev.gif',			// (string) Path and the name of the prev button image
+			imageBtnNext:			'/static/images/lightbox-btn-next.gif',			// (string) Path and the name of the next button image
+			imageBtnClose:			'/static/images/lightbox-btn-close.gif',		// (string) Path and the name of the close btn
+			imageBlank:				'/static/images/lightbox-blank.gif',			// (string) Path and the name of a blank image (one pixel)
 			// Configuration related to container image box
 			containerBorderSize:	10,			// (integer) If you adjust the padding in the CSS for the container, #lightbox-container-image-box, you will need to update this value
 			containerResizeSpeed:	400,		// (integer) Specify the resize duration of container image. These number are miliseconds. 400 is default.
@@ -44,6 +44,9 @@
 			keyToNext:				'n',		// (string) (n = next) Letter to show the next image.
 			// Don´t alter these variables in any way
 			imageArray:				[],
+                    nameArray: [],
+                    descArray: [],
+                    ownerArray: [],
 			activeImage:			0
 		},settings);
 		// Caching the jQuery object with all elements matched
@@ -75,15 +78,24 @@
 			// We have an image set? Or just an image? Let´s see it.
 			if ( jQueryMatchedObj.length == 1 ) {
 				settings.imageArray.push(new Array(objClicked.getAttribute('href'),objClicked.getAttribute('title')));
+                    settings.nameArray.push($(objClicked).parent().find("span.pic_name").html());
+                    settings.descArray.push($(objClicked).parent().find("span.pic_desc").html());
+                    settings.ownerArray.push($(objClicked).parent().find("span.pic_owner").html());
 			} else {
 				// Add an Array (as many as we have), with href and title atributes, inside the Array that storage the images references		
 				for ( var i = 0; i < jQueryMatchedObj.length; i++ ) {
 					settings.imageArray.push(new Array(jQueryMatchedObj[i].getAttribute('href'),jQueryMatchedObj[i].getAttribute('title')));
+                                    settings.nameArray.push($(jQueryMatchedObj[i]).parent().find("span.pic_name").html());
+                                    settings.descArray.push($(jQueryMatchedObj[i]).parent().find("span.pic_desc").html());
+                                    settings.ownerArray.push($(jQueryMatchedObj[i]).parent().find("span.pic_owner").html());
 				}
 			}
 			while ( settings.imageArray[settings.activeImage][0] != objClicked.getAttribute('href') ) {
 				settings.activeImage++;
 			}
+                    settings.nameArray.push($(objClicked).parent().find("span.pic_name").html());
+                    settings.descArray.push($(objClicked).parent().find("span.pic_desc").html());
+                    settings.ownerArray.push($(objClicked).parent().find("span.pic_owner").html());
 			// Call the function that prepares image exibition
 			_set_image_to_view();
 		}
@@ -125,7 +137,7 @@
 		 */
 		function _set_interface() {
 			// Apply the HTML markup into body tag
-			$('body').append('<div id="jquery-overlay"></div><div id="jquery-lightbox"><div id="lightbox-container-image-box"><div id="lightbox-container-image"><img id="lightbox-image"><div style="" id="lightbox-nav"><a href="#" id="lightbox-nav-btnPrev"></a><a href="#" id="lightbox-nav-btnNext"></a></div><div id="lightbox-loading"><a href="#" id="lightbox-loading-link"><img src="' + settings.imageLoading + '"></a></div></div></div><div id="lightbox-container-image-data-box"><div id="lightbox-container-image-data"><div id="lightbox-image-details"><span id="lightbox-image-details-caption"></span><span id="lightbox-image-details-currentNumber"></span></div><div id="lightbox-secNav"><a href="#" id="lightbox-secNav-btnClose"><img src="' + settings.imageBtnClose + '"></a></div></div></div></div>');	
+			$('body').append('<div id="jquery-overlay"></div><div id="jquery-lightbox"><div id="lightbox-container-image-box"><div id="lightbox-container-image"><img id="lightbox-image"><div style="" id="lightbox-nav"><a href="#" id="lightbox-nav-btnPrev"></a><a href="#" id="lightbox-nav-btnNext"></a></div><div id="lightbox-loading"><a href="#" id="lightbox-loading-link"><img src="' + settings.imageLoading + '"></a></div></div></div><div id="lightbox-container-image-data-box"><div id="lightbox-container-image-data"><div id="lightbox-image-details"><div id="lightbox_picinfo"><p><span class="lightbox_label">Name:<span id="lightbox_picname"></span></span></p><p><span class="lightbox_label">Description:<span id="lightbox_picdesc"></span></span></p><p><span class="lightbox_label">Owner:<span id="lightbox_picowner"></span></span></p></div><span id="lightbox-image-details-caption"></span><span id="lightbox-image-details-currentNumber"></span></div><div id="lightbox-secNav"><a href="#" id="lightbox-secNav-btnClose"><img src="' + settings.imageBtnClose + '"></a></div></div></div></div>');	
 			// Get page sizes
 			var arrPageSizes = ___getPageSize();
 			// Style overlay and show it
@@ -238,8 +250,16 @@
 		 *
 		 */
 		function _show_image_data() {
+                    // alert(settings.nameArray[0]);
+                    // alert(settings.descArray[0]);
+                    // alert(settings.ownerArray[0]);
 			$('#lightbox-container-image-data-box').slideDown('fast');
 			$('#lightbox-image-details-caption').hide();
+
+		    $('#lightbox_picname').html(settings.nameArray[settings.activeImage]);
+		    $('#lightbox_picdesc').html(settings.descArray[settings.activeImage]);
+		    $('#lightbox_picowner').html(settings.ownerArray[settings.activeImage]);
+
 			if ( settings.imageArray[settings.activeImage][1] ) {
 				$('#lightbox-image-details-caption').html(settings.imageArray[settings.activeImage][1]).show();
 			}

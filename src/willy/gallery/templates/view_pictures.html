@@ -2,7 +2,6 @@
 
 {% load i18n %}
 {% block extrajs %}
-  <script src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
   <script>
     $(window).load(function() {
     $("div.image").mouseover(function()
@@ -15,6 +14,7 @@
         $(this).find(".action").css("display", "none");
       }
     );
+    $('a.lightbox').lightBox();
     });
   </script>
 {% endblock %}
@@ -34,9 +34,12 @@
           <a href="/gallery/picture/edit/{{ picture.id }}"><img src="{{ STATIC_URL }}image/edit.png" class="action edit_button" /></a>
           <a href="/gallery/picture/delete/{{ picture.id }}"><img src="{{ STATIC_URL }}image/delete.png" class="action delete_button" /></a>
         {% endif %}
-        <a href="{{ picture.pic.url }}">
-        <img src="{{ picture.pic.url_149x149 }}" alt="{{ picture.description }}" />
-      </a>
+        <span class="pic_name" style="display:none;">{{ picture.name }}</span>
+        <span class="pic_desc" style="display:none;">{{ picture.description }}</span>
+        <span class="pic_owner" style="display:none;">{{ picture.owner }}</span>
+        <a class="lightbox" href="{{ picture.pic.url }}">
+          <img src="{{ picture.pic.url_149x149 }}" alt="{{ picture.description }}" />
+        </a>
         <span>{{ picture.name|slice:":14"}}{% if category.name|length > 20 %}&nbsp;&hellip;{% endif %}</span>
       </div>
     {% endfor %}

@@ -99,3 +99,8 @@
 	float: right;
 	padding-bottom: 0.7em;	
 }
+
+div#lightbox_pic_info {
+    width: auto;
+    background-color: red;
+}
