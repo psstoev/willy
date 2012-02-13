@@ -131,7 +131,7 @@ def view_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
     subcategories = Category.objects.filter(category_parent=category)
 
-    paginator = Paginator(Picture.objects.all(), 1)
+    paginator = Paginator(Picture.objects.all(), 12)
     # Make sure page request is an int. If not, deliver first page.
     try:
         page = int(request.GET.get('page', '1'))
@@ -267,7 +267,7 @@ def view_categories(request):
                                   
 def view_pictures(request):
     categories = get_categories(request)
-    paginator = Paginator(Picture.objects.all(), 1)
+    paginator = Paginator(Picture.objects.all(), 12)
 
     # Make sure page request is an int. If not, deliver first page.
     try:
