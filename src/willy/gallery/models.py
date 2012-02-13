@@ -7,7 +7,7 @@ from thumbs import ImageWithThumbsField
 # Create your models here.
 
 class Category(models.Model):
-    name = models.CharField(max_length=64, unique=True)
+    name = models.CharField(max_length=64)
     category_parent = models.ForeignKey('Category', related_name='parent', null=True)
     owner = models.ForeignKey(User)
 
