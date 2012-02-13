@@ -16,9 +16,9 @@ from willy.gallery.forms import CategoryForm, PictureUploadForm, PictureEditForm
 
 def get_categories(request):
     if request.user.is_authenticated():
-        categories = Category.objects.filter(owner=request.user)
+        categories = Category.objects.filter(owner=request.user).order_by('-id')
     else:
-        categories = Category.objects.all()[:10]
+        categories = Category.objects.all().order_by('-id')[:10]
         
     return categories
 
