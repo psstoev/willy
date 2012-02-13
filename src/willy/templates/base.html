@@ -40,10 +40,6 @@
       <nav>
         <a href="/gallery/categories/">{% trans "View categories" %}</a>
         <a href="/gallery/pictures/">{% trans "View pictures" %}</a>
-        {% if user.is_authenticated %}
-          <a href="/gallery/categories/edit/">{% trans "Edit my categories" %}</a>
-          <a href="/gallery/pictures/edit/">{% trans "Edit my pictures" %}</a>
-        {% endif %}
       </nav>
     </header>
     <div id="content">

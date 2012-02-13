@@ -5,6 +5,9 @@
 {% block content %}
   <h1 id="title">
     {% trans "View categories" %}
+    {% if user.is_authenticated %}
+      <a href="/gallery/category/add/">{% trans "Add new category" %}</a>
+    {% endif %}
   </h1>
   {% include "categories_sidebar.html" %}
   <table id="categories_table" class="content">
