@@ -41,12 +41,14 @@ body {
 
 a {
     text-decoration: none;
+    color: #000000;
 }
 
 .toolbar {
     overflow: hidden;
     background-color: #6b8e23;
-    height: 35px;
+    height: 36px;
+    padding-top: 4px;
     border-bottom: 1px solid #405414;
 }
 
@@ -116,7 +118,7 @@ header a, header a:visited, header a:hover, header a:active {
     color: #000000;
 }
 
-header a:hover, header a:active {
+nav a:hover, nav a:active {
     padding-bottom: 3px;
     border-bottom: 2px solid #000000;
 }
@@ -136,9 +138,9 @@ nav a {
 
 h1#title {
     width: 940px;
-    height: 25px;
     margin-bottom: 20px;
-    padding-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 20px;
     color: #eeee00;
     background-color: #6b8e23;
@@ -147,6 +149,8 @@ h1#title {
 }
 
 section#categories {
+    position: relative;
+    float: left;
     display: block;
     width: 312px;
     background-color: #bbbb00;
@@ -175,7 +179,7 @@ section#categories a {
     padding-bottom: 3px;
     padding-left: 20px;
     font-size: 14px;
-    color: #000;
+    color: #000000;
 }
 
 section#categories a:hover, section#categories a:active, section#categories a.active {
@@ -188,3 +192,116 @@ section#categories a.active {
     border-top: 1px solid #6b8e23;
     border-bottom: 1px solid #6b8e23;
 }
+
+table#categories_table {
+    position: relative;
+    float: left;
+    width: 628px;
+    margin-left: 20px;
+}
+
+table#categories_table tr.t_header {
+    background-color: #6b8e23;
+    height: 40px;
+    border-top: 1px solid #405414;
+    border-left: 1px solid #405414;
+    border-bottom: 1px solid #405414;
+}
+
+table#categories_table tr.t_header th {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: bold;
+    color: #eeee00;
+    text-align: center;
+    border-right: 1px solid #405414;
+}
+
+table#categories_table tr td {
+    padding: 3px 8px 3px 8px;
+    text-align: center;
+    border-left: 1px solid #6b8e23;
+    border-right: 1px solid #6b8e23;
+    border-bottom: 1px solid #6b8e23;
+}
+
+table#categories_table tr td a {
+    display: block;
+    color: black;
+}
+
+table#categories_table tr.even td a:hover, table#categories_table tr.even td a:active {
+    color: #eeee00;
+}
+
+table#categories_table tr.odd td a:hover, table#categories_table tr.odd td a:active {
+    color: #546d1d;
+}
+
+table#categories_table tr td.left {
+    text-align: left;
+}
+
+table#categories_table tr.even {
+    background-color: #bbbb00;
+}
+
+table#categories_table tr.odd {
+    background-color: #d6e567;
+}
+
+div#category {
+    position: relative;
+    float: left;
+    width: 628px;
+    margin-left: 20px;
+}
+
+div#category h2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    color: #eeee00;
+    background-color: #6b8e23;
+    border-top: 1px solid #405414;
+    border-bottom: 1px solid #405414;
+}
+
+h3 {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #6b8e23;
+}
+
+section#subcategories a {
+    display: block;
+    line-height: 1.5;
+}
+
+section#subcategories a:hover, section#subcategories a:active {
+    color: #405414;
+}
+
+div.image {
+    position: relative;
+    float: left;
+    width: 157px;
+    background-color: #6b8e23;
+    margin: 0px 23px 26px 23px;
+    padding: 3px 3px 3px 3px;
+}
+
+div.image img {
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+div.image span {
+    display: block;
+    color: #eeee00;
+    padding-bottom: 4px;
+    margin-left: 4px;
+}
+
