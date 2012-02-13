@@ -1,10 +1,17 @@
-{% extends "base.html" %}
+{% extends "base_form.html" %}
+
 {% load i18n %}
 
-{% block content %}
-  <form enctype="multipart/form-data" method="post" action="/gallery/picture/upload/">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="{% trans 'Upload picture' %}" />
-  </form>
-{% endblock content %}
+{% block customcss %}
+  <style type="text/css">
+    #form_container {
+        width: 500px;
+    }
+  </style>
+{% endblock %}
+
+{% block formtitle %}{% trans "Upload picture" %}{% endblock %}
+
+{% block formaction %}/gallery/picture/upload{% endblock %}
+
+{% block submittitle %}{% trans "Upload picture" %}{% endblock %}
