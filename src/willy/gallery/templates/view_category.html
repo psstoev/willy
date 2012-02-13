@@ -25,14 +25,14 @@
   <script>
     $(window).load(function() {
     $("div.image").mouseover(function()
-      {
-        $(this).find(".action").css("display", "block");
-      }
+    {
+    $(this).find(".action").css("display", "block");
+    }
     );
     $("div.image").mouseout(function()
-      {
-        $(this).find(".action").css("display", "none");
-      }
+    {
+    $(this).find(".action").css("display", "none");
+    }
     );
     $('a.lightbox').lightBox();
     });
@@ -71,10 +71,10 @@
             <a href="/gallery/picture/edit/{{ picture.id }}"><img src="{{ STATIC_URL }}image/edit.png" class="action edit_button" /></a>
             <a href="/gallery/picture/delete/{{ picture.id }}"><img src="{{ STATIC_URL }}image/delete.png" class="action delete_button" /></a>
           {% endif %}
-        <span class="pic_name" style="display:none;">{{ picture.name }}</span>
-        <span class="pic_desc" style="display:none;">{{ picture.description }}</span>
-        <span class="pic_owner" style="display:none;">{{ picture.owner }}</span>
-        <a class="lightbox" href="{{ picture.pic.url }}">
+          <span class="pic_name" style="display:none;">{{ picture.name }}</span>
+          <span class="pic_desc" style="display:none;">{{ picture.description }}</span>
+          <span class="pic_owner" style="display:none;">{{ picture.owner }}</span>
+          <a class="lightbox" href="{{ picture.pic.url }}">
             <img src="{{ picture.pic.url_149x149 }}" alt="{{ picture.description }}" />
           </a>
           <span>{{ picture.name|slice:":14"}}{% if category.name|length > 14 %}&nbsp;&hellip;{% endif %}</span>
@@ -83,21 +83,21 @@
       {% if not pictures %}
         {% trans "There are no images added to this category" %}
       {% endif %}
-  <div class="pagination">
-    <span class="step-links">
-      {% if pictures.has_previous %}
-        <a href="?page={{ picturess.previous_page_number }}">previous</a>
-      {% endif %}
-      
-      <span class="current">
-        Page {{ pictures.number }} of {{ pictures.paginator.num_pages }}.
-      </span>
-      
-      {% if pictures.has_next %}
-        <a href="?page={{ pictures.next_page_number }}">next</a>
-      {% endif %}
-    </span>
-  </div>
+      <div class="pagination">
+        <span class="step-links">
+          {% if pictures.has_previous %}
+            <a href="?page={{ picturess.previous_page_number }}">previous</a>
+          {% endif %}
+          
+          <span class="current">
+            Page {{ pictures.number }} of {{ pictures.paginator.num_pages }}.
+          </span>
+          
+          {% if pictures.has_next %}
+            <a href="?page={{ pictures.next_page_number }}">next</a>
+          {% endif %}
+        </span>
+      </div>
     </section>
   </div>
 {% endblock content %}
